@@ -30,7 +30,7 @@
 <meta property="og:description" content="Hook">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-09-09T12:57:49.187Z">
-<meta property="article:modified_time" content="2024-09-09T13:03:15.946Z">
+<meta property="article:modified_time" content="2024-12-24T09:12:28.651Z">
 <meta property="article:author" content="UmVfX1BvaW50">
 <meta property="article:tag" content="Hook">
 <meta name="twitter:card" content="summary">
@@ -185,10 +185,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2024-09-09 20:57:49 / 修改时间：21:03:15" itemprop="dateCreated datePublished" datetime="2024-09-09T20:57:49+08:00">2024-09-09</time>
+              <time title="创建时间：2024-09-09 20:57:49" itemprop="dateCreated datePublished" datetime="2024-09-09T20:57:49+08:00">2024-09-09</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-12-24 17:12:28" itemprop="dateModified" datetime="2024-12-24T17:12:28+08:00">2024-12-24</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -214,8 +220,6 @@
 <li>Hook<span id="more"></span></li>
 </ul>
 <HR color="red"></HR>
-
-
 
 <h1 id="Objection"><a href="#Objection" class="headerlink" title="Objection"></a>Objection</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># hook list</span></span><br><span class="line">jobs <span class="built_in">list</span> </span><br><span class="line"><span class="comment"># 关闭Hook任务</span></span><br><span class="line">jobs kill &lt;job_id&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 列出内存中加载的so</span></span><br><span class="line">memory <span class="built_in">list</span> modules</span><br><span class="line"><span class="comment"># 查看某个so库的导出函数</span></span><br><span class="line">memory <span class="built_in">list</span> exports &lt;name.so&gt; [--json name.json]</span><br><span class="line"><span class="comment"># dump</span></span><br><span class="line">memory dump <span class="built_in">all</span> &lt;filename&gt;</span><br><span class="line">memory dump from_base &lt;startaddress&gt; &lt;字节数&gt; &lt;文件&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 列出内存中所有的类</span></span><br><span class="line">android hooking <span class="built_in">list</span> classes &lt;<span class="keyword">class</span> <span class="title class_">name</span>&gt;</span><br><span class="line"><span class="comment"># 列出当前应用程序使用的类方法s</span></span><br><span class="line">android hooking <span class="built_in">list</span> class_methods</span><br><span class="line"><span class="comment"># 列出当前应用程序使用的类加载器</span></span><br><span class="line">android hooking <span class="built_in">list</span> class_loaders</span><br><span class="line"><span class="comment"># 列出内存中所有的Activity</span></span><br><span class="line">android hooking <span class="built_in">list</span> activities</span><br><span class="line">android hooking <span class="built_in">list</span> receives</span><br><span class="line">android hooking <span class="built_in">list</span> services</span><br><span class="line"><span class="comment"># 内存堆上搜索类实例</span></span><br><span class="line">android heap search instances &lt;类名&gt;</span><br><span class="line"><span class="comment"># search</span></span><br><span class="line">android hooking search methods &lt;keyword&gt;</span><br><span class="line">android hooking search classes &lt;keyword&gt;</span><br><span class="line"><span class="comment"># 跳转Activity</span></span><br><span class="line">android intent launch_activity &lt;活动名&gt;</span><br><span class="line"><span class="comment"># 生成</span></span><br><span class="line">android hooking generate simple &lt;类名&gt;</span><br><span class="line"><span class="comment"># hook</span></span><br><span class="line">android hooking watch <span class="keyword">class</span> &lt;类名&gt; [--dump-args --dump-backtrace --dump-<span class="keyword">return</span>]</span><br><span class="line">android hooking watch class_method &lt;方法名&gt; [--dump-args --dump-backtrace --dump-<span class="keyword">return</span>]</span><br><span class="line">android hooking watch class_method &lt;方法名&gt; <span class="string">&quot;参数1, 参数2&quot;</span> --dump-args --dump-backtrace --dump-<span class="keyword">return</span></span><br></pre></td></tr></table></figure>
 
@@ -369,7 +373,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-count">9</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -382,7 +386,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

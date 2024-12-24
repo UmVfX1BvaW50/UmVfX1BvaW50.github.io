@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="梳理一些漏洞思路和案例">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android安全网络通信相关">
+<meta property="og:url" content="http://example.com/2024/12/24/SSLnet/index.html">
+<meta property="og:site_name" content="UmVfX1BvaW50&#39;s Blog">
+<meta property="og:description" content="梳理一些漏洞思路和案例">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-12-24T06:37:15.728Z">
+<meta property="article:modified_time" content="2024-12-24T09:13:18.952Z">
+<meta property="article:author" content="UmVfX1BvaW50">
+<meta property="article:tag" content="Android">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2024/12/24/SSLnet/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Android安全网络通信相关 | UmVfX1BvaW50's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">UmVfX1BvaW50's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/12/24/SSLnet/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="UmVfX1BvaW50">
+      <meta itemprop="description" content="Team UKFC">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="UmVfX1BvaW50's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Android安全网络通信相关
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2024-12-24 14:37:15 / 修改时间：17:13:18" itemprop="dateCreated datePublished" datetime="2024-12-24T14:37:15+08:00">2024-12-24</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <ul>
+<li>梳理一些漏洞思路和案例<span id="more"></span></li>
+</ul>
+<HR color="red"></HR>
+
+<h2 id="VPN检测"><a href="#VPN检测" class="headerlink" title="VPN检测"></a>VPN检测</h2><ul>
+<li>检测常见VPN接口名以及网络特征</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">public final boolean <span class="title class_">Check</span>_Vpn1() &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="comment">//获取所有网络接口</span></span><br><span class="line">        <span class="title class_">Enumeration</span>&lt;<span class="title class_">NetworkInterface</span>&gt; networkInterfaces = <span class="title class_">NetworkInterface</span>.<span class="title function_">getNetworkInterfaces</span>();</span><br><span class="line">        <span class="keyword">if</span> (networkInterfaces == <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="title class_">Iterator</span> it = <span class="title class_">Collections</span>.<span class="title function_">list</span>(networkInterfaces).<span class="title function_">iterator</span>();</span><br><span class="line">        <span class="keyword">while</span> (it.<span class="title function_">hasNext</span>()) &#123;</span><br><span class="line">            <span class="title class_">NetworkInterface</span> networkInterface = (<span class="title class_">NetworkInterface</span>) it.<span class="title function_">next</span>();</span><br><span class="line">            <span class="comment">//网络接口开启和接口地址非空</span></span><br><span class="line">            <span class="keyword">if</span> (networkInterface.<span class="title function_">isUp</span>() &amp;&amp; !networkInterface.<span class="title function_">getInterfaceAddresses</span>().<span class="title function_">isEmpty</span>()) &#123;</span><br><span class="line">                <span class="title class_">Log</span>.<span class="title function_">d</span>(<span class="string">&quot;zj595&quot;</span>, <span class="string">&quot;isVpn NetworkInterface Name: &quot;</span> + networkInterface.<span class="title function_">getName</span>());</span><br><span class="line">                <span class="comment">//常见VPN接口名：tun0 ppp0 p2p0 ccmni0</span></span><br><span class="line">                <span class="keyword">if</span> (<span class="title class_">Intrinsics</span>.<span class="title function_">areEqual</span>(networkInterface.<span class="title function_">getName</span>(), <span class="string">&quot;tun0&quot;</span>) || <span class="title class_">Intrinsics</span>.<span class="title function_">areEqual</span>(networkInterface.<span class="title function_">getName</span>(), <span class="string">&quot;ppp0&quot;</span>) || <span class="title class_">Intrinsics</span>.<span class="title function_">areEqual</span>(networkInterface.<span class="title function_">getName</span>(), <span class="string">&quot;p2p0&quot;</span>) || <span class="title class_">Intrinsics</span>.<span class="title function_">areEqual</span>(networkInterface.<span class="title function_">getName</span>(), <span class="string">&quot;ccmni0&quot;</span>)) &#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (<span class="title class_">Throwable</span> th) &#123;</span><br><span class="line">        th.<span class="title function_">printStackTrace</span>();</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">public final boolean <span class="title class_">Check</span>_Vpn2() &#123;</span><br><span class="line">    boolean z;</span><br><span class="line">    <span class="title class_">String</span> networkCapabilities;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="title class_">Object</span> systemService = <span class="title function_">getApplicationContext</span>().<span class="title function_">getSystemService</span>(<span class="string">&quot;connectivity&quot;</span>);</span><br><span class="line">        <span class="title class_">Intrinsics</span>.<span class="title function_">checkNotNull</span>(systemService, <span class="string">&quot;null cannot be cast to non-null type android.net.ConnectivityManager&quot;</span>);</span><br><span class="line">        <span class="title class_">ConnectivityManager</span> connectivityManager = (<span class="title class_">ConnectivityManager</span>) systemService;</span><br><span class="line">        <span class="title class_">NetworkCapabilities</span> networkCapabilities2 = connectivityManager.<span class="title function_">getNetworkCapabilities</span>(connectivityManager.<span class="title function_">getActiveNetwork</span>());</span><br><span class="line">        <span class="title class_">Log</span>.<span class="title function_">i</span>(<span class="string">&quot;zj595&quot;</span>, <span class="string">&quot;networkCapabilities -&gt; &quot;</span> + networkCapabilities2);</span><br><span class="line">        <span class="comment">// Android 4 代表VPN</span></span><br><span class="line">        boolean z2 = networkCapabilities2 != <span class="literal">null</span> &amp;&amp; networkCapabilities2.<span class="title function_">hasTransport</span>(<span class="number">4</span>);</span><br><span class="line">        <span class="comment">// 检查网络能力是否包含 &quot;WIFI|VPN&quot;</span></span><br><span class="line">        <span class="keyword">if</span> (networkCapabilities2 != <span class="literal">null</span> &amp;&amp; (networkCapabilities = networkCapabilities2.<span class="title function_">toString</span>()) != <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (<span class="title class_">StringsKt</span>.<span class="title function_">contains$default</span>((<span class="title class_">CharSequence</span>) networkCapabilities, (<span class="title class_">CharSequence</span>) <span class="string">&quot;WIFI|VPN&quot;</span>, <span class="literal">false</span>, <span class="number">2</span>, (<span class="title class_">Object</span>) <span class="literal">null</span>)) &#123;</span><br><span class="line">                z = <span class="literal">true</span>;</span><br><span class="line">                <span class="keyword">return</span> !z || z2;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        z = <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">if</span> (z) &#123;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (<span class="title class_">Exception</span> e) &#123;</span><br><span class="line">        e.<span class="title function_">printStackTrace</span>();</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>frida绕过</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hook_vpn</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="title class_">Java</span>.<span class="title function_">perform</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">        <span class="keyword">var</span> <span class="title class_">NetworkInterface</span> = <span class="title class_">Java</span>.<span class="title function_">use</span>(<span class="string">&quot;java.net.NetworkInterface&quot;</span>);</span><br><span class="line">        <span class="title class_">NetworkInterface</span>.<span class="property">getName</span>.<span class="property">implementation</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">            <span class="keyword">var</span> name = <span class="variable language_">this</span>.<span class="title function_">getName</span>();  <span class="comment">//hook java层的getName方法</span></span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;name: &quot;</span> + name);</span><br><span class="line">            <span class="keyword">if</span> (name === <span class="string">&quot;tun0&quot;</span> || name === <span class="string">&quot;ppp0&quot;</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="string">&quot;rmnet_data0&quot;</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> name;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        <span class="keyword">var</span> <span class="title class_">NetworkCapabilities</span> = <span class="title class_">Java</span>.<span class="title function_">use</span>(<span class="string">&quot;android.net.NetworkCapabilities&quot;</span>);</span><br><span class="line">        <span class="title class_">NetworkCapabilities</span>.<span class="property">hasTransport</span>.<span class="property">implementation</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        <span class="title class_">NetworkCapabilities</span>.<span class="property">appendStringRepresentationOfBitMaskToStringBuilder</span>.<span class="property">implementation</span> = <span class="keyword">function</span> (<span class="params">sb, bitMask, nameFetcher, separator</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (bitMask == <span class="number">18</span>) &#123;</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;bitMask&quot;</span>, bitMask);</span><br><span class="line">                sb.<span class="title function_">append</span>(<span class="string">&quot;WIFI&quot;</span>);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(sb, bitMask);</span><br><span class="line">                <span class="variable language_">this</span>.<span class="title function_">appendStringRepresentationOfBitMaskToStringBuilder</span>(sb, bitMask, nameFetcher, separator);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="SSLPinning（加强版单项校验）"><a href="#SSLPinning（加强版单项校验）" class="headerlink" title="SSLPinning（加强版单项校验）"></a>SSLPinning（加强版单项校验）</h2><ul>
+<li><p>服务端发送服务器公钥–&gt;客户端校验服务端公钥–&gt;选择加密方案–&gt;对称加密</p>
+</li>
+<li><p>指纹校验、证书校验、Host校验</p>
+</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://github.com/ac-pm/SSLUnpinning_Xposed">ac-pm&#x2F;SSLUnpinning_Xposed: Android Xposed Module to bypass SSL certificate validation (Certificate Pinning).</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/Fuzion24/JustTrustMe">Fuzion24&#x2F;JustTrustMe: An xposed module that disables SSL certificate checking for the purposes of auditing an app with cert pinning</a></p>
+<h3 id="指纹校验"><a href="#指纹校验" class="headerlink" title="指纹校验"></a>指纹校验</h3><p>例子：okhttp3</p>
+<p>CertificatePinner的check方法会检测给定hash和证书hash是否匹配</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 检查指定主机名的证书链是否符合预设的哈希值（证书固定）。</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> hostname         要验证的主机名。</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> peerCertificates 待验证的证书列表。</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@throws</span> SSLPeerUnverifiedException 如果证书不符合预设的哈希值，则抛出此异常。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">check</span><span class="params">(String hostname, List&lt;Certificate&gt; peerCertificates)</span></span><br><span class="line">      <span class="keyword">throws</span> SSLPeerUnverifiedException &#123;</span><br><span class="line">    <span class="comment">// 查找与主机名匹配的哈希值列表（证书固定列表）。</span></span><br><span class="line">    List&lt;Pin&gt; pins = findMatchingPins(hostname);</span><br><span class="line">    <span class="comment">// 如果没有找到任何匹配的哈希值，则直接返回，表示无需进一步检查。</span></span><br><span class="line">    <span class="keyword">if</span> (pins.isEmpty()) <span class="keyword">return</span>;</span><br><span class="line">  </span><br><span class="line">    <span class="comment">// 如果存在证书链清理器，则先清理证书链中的冗余证书。</span></span><br><span class="line">    <span class="keyword">if</span> (certificateChainCleaner != <span class="literal">null</span>) &#123;</span><br><span class="line">      peerCertificates = certificateChainCleaner.clean(peerCertificates, hostname);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 遍历每一个证书进行检查。</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">c</span> <span class="operator">=</span> <span class="number">0</span>, certsSize = peerCertificates.size(); c &lt; certsSize; c++) &#123;</span><br><span class="line">      <span class="comment">// 获取当前证书。</span></span><br><span class="line">      <span class="type">X509Certificate</span> <span class="variable">x509Certificate</span> <span class="operator">=</span> (X509Certificate) peerCertificates.get(c);</span><br><span class="line">      <span class="comment">// 懒加载计算每个证书的SHA-1和SHA-256哈希值。</span></span><br><span class="line">      <span class="type">ByteString</span> <span class="variable">sha1</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">      <span class="type">ByteString</span> <span class="variable">sha256</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">      <span class="comment">// 遍历预设的哈希值列表。</span></span><br><span class="line">      <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">p</span> <span class="operator">=</span> <span class="number">0</span>, pinsSize = pins.size(); p &lt; pinsSize; p++) &#123;</span><br><span class="line">        <span class="type">Pin</span> <span class="variable">pin</span> <span class="operator">=</span> pins.get(p);</span><br><span class="line">        <span class="comment">// 根据预设的哈希算法进行检查。</span></span><br><span class="line">        <span class="keyword">if</span> (pin.hashAlgorithm.equals(<span class="string">&quot;sha256/&quot;</span>)) &#123;</span><br><span class="line">          <span class="comment">// 如果尚未计算SHA-256哈希值，则进行计算。</span></span><br><span class="line">          <span class="keyword">if</span> (sha256 == <span class="literal">null</span>) sha256 = sha256(x509Certificate);</span><br><span class="line">          <span class="comment">// 如果证书的SHA-256哈希值与预设值相同，则返回成功。</span></span><br><span class="line">          <span class="keyword">if</span> (pin.hash.equals(sha256)) <span class="keyword">return</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (pin.hashAlgorithm.equals(<span class="string">&quot;sha1/&quot;</span>)) &#123;</span><br><span class="line">          <span class="comment">// 如果尚未计算SHA-1哈希值，则进行计算。</span></span><br><span class="line">          <span class="keyword">if</span> (sha1 == <span class="literal">null</span>) sha1 = sha1(x509Certificate);</span><br><span class="line">          <span class="comment">// 如果证书的SHA-1哈希值与预设值相同，则返回成功。</span></span><br><span class="line">          <span class="keyword">if</span> (pin.hash.equals(sha1)) <span class="keyword">return</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          <span class="comment">// 如果遇到不支持的哈希算法，则抛出错误。</span></span><br><span class="line">          <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">AssertionError</span>(<span class="string">&quot;unsupported hashAlgorithm: &quot;</span> + pin.hashAlgorithm);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 如果遍历完所有证书和哈希值都没有匹配，则抛出异常。</span></span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">SSLPeerUnverifiedException</span>(<span class="string">&quot;No matching certificate found.&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>frida绕过(check函数直接置空干掉)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function <span class="title function_">anti_ssl_key</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="comment">//check方法置空即可</span></span><br><span class="line">    <span class="type">var</span> <span class="variable">okhttp3_Activity_1</span> <span class="operator">=</span> Java.use(<span class="string">&#x27;okhttp3.CertificatePinner&#x27;</span>);  </span><br><span class="line">    okhttp3_Activity_1.check.overload(<span class="string">&#x27;java.lang.String&#x27;</span>, <span class="string">&#x27;java.util.List&#x27;</span>).implementation = function(a, b) &#123;                            </span><br><span class="line">    console.log(<span class="string">&#x27;[+] Bypassing SSL key pinning: &#x27;</span> + a);</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">&#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="证书校验"><a href="#证书校验" class="headerlink" title="证书校验"></a>证书校验</h3><ul>
+<li>将服务器发来的证书的公钥base64和本地证书公钥base64进行匹配</li>
+<li><code>trustManager</code> 类的checkServerTrusted接口</li>
+</ul>
+<p>同样frida绕过，模拟实例化trustManager类置空，hook</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">function <span class="title function_">anti_ssl_cert</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">// 使用Frida获取Java类X509TrustManager的引用</span></span><br><span class="line">    <span class="type">var</span> <span class="variable">X509TrustManager</span> <span class="operator">=</span> Java.use(<span class="string">&#x27;javax.net.ssl.X509TrustManager&#x27;</span>);</span><br><span class="line">    <span class="comment">// 使用Frida获取Java类SSLContext的引用</span></span><br><span class="line">    <span class="type">var</span> <span class="variable">SSLContext</span> <span class="operator">=</span> Java.use(<span class="string">&#x27;javax.net.ssl.SSLContext&#x27;</span>);</span><br><span class="line">    <span class="comment">// 注册一个自定义的TrustManager类</span></span><br><span class="line">    <span class="type">var</span> <span class="variable">TrustManager</span> <span class="operator">=</span> Java.registerClass(&#123;</span><br><span class="line">        <span class="comment">// 指定自定义TrustManager的全名</span></span><br><span class="line">        name: <span class="string">&#x27;dev.asd.test.TrustManager&#x27;</span>,</span><br><span class="line">        <span class="comment">// 指定自定义TrustManager实现的接口</span></span><br><span class="line">        implements: [X509TrustManager],</span><br><span class="line">        <span class="comment">// 定义自定义TrustManager的方法实现</span></span><br><span class="line">        methods: &#123;</span><br><span class="line">            <span class="comment">// 客户端证书信任检查，这里不实现任何逻辑</span></span><br><span class="line">            checkClientTrusted: function(chain, authType) &#123;&#125;,</span><br><span class="line">            <span class="comment">// 服务器证书信任检查，这里不实现任何逻辑</span></span><br><span class="line">            checkServerTrusted: function(chain, authType) &#123;&#125;,</span><br><span class="line">            <span class="comment">// 返回受信任的CA证书数组，这里返回空数组</span></span><br><span class="line">            getAcceptedIssuers: function() &#123;<span class="keyword">return</span> []; &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="comment">// 准备一个TrustManager数组，用于传递给SSLContext.init()方法</span></span><br><span class="line">    <span class="type">var</span> <span class="variable">TrustManagers</span> <span class="operator">=</span> [TrustManager.$<span class="keyword">new</span>()];</span><br><span class="line">    <span class="comment">// 获取SSLContext.init()方法的引用，该方法用于初始化SSL上下文</span></span><br><span class="line">    <span class="type">var</span> <span class="variable">SSLContext_init</span> <span class="operator">=</span> SSLContext.init.overload(</span><br><span class="line">        <span class="string">&#x27;[Ljavax.net.ssl.KeyManager;&#x27;</span>, <span class="string">&#x27;[Ljavax.net.ssl.TrustManager;&#x27;</span>, <span class="string">&#x27;java.security.SecureRandom&#x27;</span></span><br><span class="line">    );</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="comment">// 覆盖init方法的实现，指定使用自定义的TrustManager</span></span><br><span class="line">        SSLContext_init.implementation = function(keyManager, trustManager, secureRandom) &#123;</span><br><span class="line">            console.log(<span class="string">&#x27;[+] Bypassing Trustmanager (Android &lt; 7) pinner&#x27;</span>);</span><br><span class="line">            <span class="comment">// 调用原始的init方法，并使用自定义的TrustManager数组</span></span><br><span class="line">            SSLContext_init.call(<span class="built_in">this</span>, keyManager, TrustManagers, secureRandom);</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (err) &#123;</span><br><span class="line">        <span class="comment">// 如果覆盖init方法失败，打印错误信息</span></span><br><span class="line">        console.log(<span class="string">&#x27;[-] TrustManager (Android &lt; 7) pinner not found&#x27;</span>);</span><br><span class="line">        console.log(err); <span class="comment">// 可以取消注释来打印异常的详细信息</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="双向认证"><a href="#双向认证" class="headerlink" title="双向认证"></a>双向认证</h2><ul>
+<li>服务端发送服务器公钥–&gt;客户端校验后发送客户端证书公钥–&gt;服务端校验客户端证书，拿到客户端公钥–&gt;沟通加密方案–&gt;对称加密</li>
+</ul>
+<p>案例</p>
+<ol>
+<li>服务端</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">from flask <span class="keyword">import</span> Flask, jsonify </span><br><span class="line"><span class="keyword">import</span> <span class="type">ssl</span> </span><br><span class="line"> </span><br><span class="line"><span class="variable">app</span> <span class="operator">=</span> Flask(__name__)</span><br><span class="line"> </span><br><span class="line"># ssl 证书校验 </span><br><span class="line"><span class="meta">@app</span>.route(<span class="string">&#x27;/ca&#x27;</span>) </span><br><span class="line">def <span class="title function_">ssl_verify</span><span class="params">()</span>: </span><br><span class="line">    <span class="keyword">return</span> jsonify(&#123;<span class="string">&quot;message&quot;</span>: <span class="string">&quot;HTTPS server with mutual SSL verification started.&quot;</span>&#125;) </span><br><span class="line">   </span><br><span class="line"># 配置ssl上下文，关键函数 </span><br><span class="line">def <span class="title function_">get_ssl_context</span><span class="params">()</span>: </span><br><span class="line">    # CA根证书路径 </span><br><span class="line">    ca_crt_path = <span class="string">&#x27;certs/ca.crt&#x27;</span> </span><br><span class="line">    # 服务端证书和密钥路径 </span><br><span class="line">    server_crt_path = <span class="string">&#x27;certs/server.crt&#x27;</span> </span><br><span class="line">    server_key_path = <span class="string">&#x27;certs/server.key&#x27;</span> </span><br><span class="line">    # 创建SSL上下文，使用TLS服务器模式 </span><br><span class="line">    ssl_context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER) </span><br><span class="line">    # 设置验证模式为需要客户端证书 </span><br><span class="line">    ssl_context.verify_mode = ssl.CERT_REQUIRED </span><br><span class="line">    # 启用主机名检查（根据需要设置） </span><br><span class="line">    ssl_context.check_hostname = False </span><br><span class="line">    # 设置加密套件 </span><br><span class="line">    ssl_context.set_ciphers(<span class="string">&quot;HIGH:!SSLv3:!TLSv1:!aNULL:@STRENGTH&quot;</span>) </span><br><span class="line">    # 加载CA根证书，用于验证客户端证书 </span><br><span class="line">    ssl_context.load_verify_locations(cafile=ca_crt_path) </span><br><span class="line">    # 加载服务端证书和私钥 </span><br><span class="line">    ssl_context.load_cert_chain(certfile=server_crt_path, keyfile=server_key_path) </span><br><span class="line">    <span class="keyword">return</span> ssl_context </span><br><span class="line">   </span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>: </span><br><span class="line">    ssl_context = get_ssl_context() </span><br><span class="line">    app.run(host=<span class="string">&quot;192.168.124.21&quot;</span>, port=<span class="number">8088</span>,ssl_context=ssl_context)</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>客户端</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">fun <span class="title function_">ssl_verify</span><span class="params">()</span> = Thread &#123;  </span><br><span class="line"><span class="comment">// 初始化一个用于信任管理的对象</span></span><br><span class="line">    <span class="keyword">var</span> trustManager: X509TrustManager? = <span class="literal">null</span></span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="comment">// 获取默认的信任管理工厂实例</span></span><br><span class="line">        <span class="type">val</span> <span class="variable">trustManagerFactory</span> <span class="operator">=</span> TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm())</span><br><span class="line">        <span class="comment">// 初始化信任管理工厂，传入null表示使用系统默认的信任存储</span></span><br><span class="line">        trustManagerFactory.init(<span class="literal">null</span> as KeyStore?)</span><br><span class="line">        <span class="comment">// 获取信任管理器列表</span></span><br><span class="line">        <span class="type">val</span> <span class="variable">trustManagers</span> <span class="operator">=</span> trustManagerFactory.trustManagers</span><br><span class="line">        <span class="comment">// 检查信任管理器列表是否只有一个X509TrustManager类型的对象</span></span><br><span class="line">        <span class="keyword">if</span> (trustManagers.size != <span class="number">1</span> || trustManagers[<span class="number">0</span>] !is X509TrustManager) &#123;</span><br><span class="line">            <span class="comment">// 如果不符合预期，则抛出异常</span></span><br><span class="line">            <span class="keyword">throw</span> IllegalStateException(<span class="string">&quot;Unexpected default trust managers: $&#123;trustManagers.contentToString()&#125;&quot;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 赋值信任管理器</span></span><br><span class="line">        trustManager = trustManagers[<span class="number">0</span>] as X509TrustManager</span><br><span class="line">    &#125; <span class="keyword">catch</span> (e: Exception) &#123;</span><br><span class="line">        <span class="comment">// 捕获异常并打印堆栈跟踪信息</span></span><br><span class="line">        e.printStackTrace()</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 创建 OkHttpClient 实例并配置SSL套接字工厂和主机名验证器</span></span><br><span class="line">    <span class="type">val</span> <span class="variable">client</span> <span class="operator">=</span> OkHttpClient.Builder()</span><br><span class="line">        .sslSocketFactory(</span><br><span class="line">            <span class="comment">// 使用应用程序上下文获取自定义的SSL套接字工厂</span></span><br><span class="line">            ClientSSLSocketFactory.getSocketFactory(applicationContext),</span><br><span class="line">            <span class="comment">// 设置信任管理器，如果为null则抛出异常</span></span><br><span class="line">            trustManager ?: <span class="keyword">throw</span> IllegalStateException(<span class="string">&quot;TrustManager is null&quot;</span>)</span><br><span class="line">        )</span><br><span class="line">        .hostnameVerifier &#123; hostname, session -&gt; <span class="literal">true</span> &#125;</span><br><span class="line">        .build()</span><br><span class="line">    <span class="comment">// 构建请求</span></span><br><span class="line">    <span class="type">val</span> <span class="variable">request</span> <span class="operator">=</span> Request.Builder()</span><br><span class="line">        .url(<span class="string">&quot;https://192.168.124.21:8088/ca&quot;</span>) <span class="comment">// 设置请求的URL</span></span><br><span class="line">        .build()</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="comment">// 发送HTTP请求并获取响应</span></span><br><span class="line">        <span class="type">val</span> <span class="variable">response</span> <span class="operator">=</span> client.newCall(request).execute()</span><br><span class="line">        <span class="comment">// 打印响应的状态码，表明HTTPS双向认证成功</span></span><br><span class="line">        Log.d(TAG, <span class="string">&quot;双向检测通过:$&#123;response.code()&#125;&quot;</span>)</span><br><span class="line">    &#125; <span class="keyword">catch</span> (e: IOException) &#123;</span><br><span class="line">        <span class="comment">// 如果请求失败，打印错误信息，并记录堆栈跟踪</span></span><br><span class="line">        Log.d(TAG, <span class="string">&quot;双向检测不通过&quot;</span>)</span><br><span class="line">        e.printStackTrace()</span><br><span class="line">    &#125; </span><br><span class="line">&#125;.start()</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>frida dump内置证书</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hook_KeyStore_load</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="title class_">Java</span>.<span class="title function_">perform</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">        <span class="keyword">var</span> <span class="title class_">ByteString</span> = <span class="title class_">Java</span>.<span class="title function_">use</span>(<span class="string">&quot;com.android.okhttp.okio.ByteString&quot;</span>);</span><br><span class="line">        <span class="keyword">var</span> myArray=<span class="keyword">new</span> <span class="title class_">Array</span>(<span class="number">1024</span>);</span><br><span class="line">        <span class="keyword">var</span> i = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; myArray.<span class="property">length</span>; i++) &#123;</span><br><span class="line">            myArray[i]= <span class="number">0x0</span>;</span><br><span class="line">         &#125;</span><br><span class="line">        <span class="keyword">var</span> buffer = <span class="title class_">Java</span>.<span class="title function_">array</span>(<span class="string">&#x27;byte&#x27;</span>,myArray);</span><br><span class="line">        <span class="keyword">var</span> <span class="title class_">StringClass</span> = <span class="title class_">Java</span>.<span class="title function_">use</span>(<span class="string">&quot;java.lang.String&quot;</span>);</span><br><span class="line">        <span class="keyword">var</span> <span class="title class_">KeyStore</span> = <span class="title class_">Java</span>.<span class="title function_">use</span>(<span class="string">&quot;java.security.KeyStore&quot;</span>);</span><br><span class="line">        <span class="title class_">KeyStore</span>.<span class="property">load</span>.<span class="title function_">overload</span>(<span class="string">&#x27;java.security.KeyStore$LoadStoreParameter&#x27;</span>).<span class="property">implementation</span> = <span class="keyword">function</span> (<span class="params">arg0</span>) &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Java</span>.<span class="title function_">use</span>(<span class="string">&quot;android.util.Log&quot;</span>).<span class="title function_">getStackTraceString</span>(<span class="title class_">Java</span>.<span class="title function_">use</span>(<span class="string">&quot;java.lang.Throwable&quot;</span>).$new()));</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;KeyStore.load1:&quot;</span>, arg0);</span><br><span class="line">            <span class="variable language_">this</span>.<span class="title function_">load</span>(arg0);</span><br><span class="line">        &#125;;</span><br><span class="line">        <span class="title class_">KeyStore</span>.<span class="property">load</span>.<span class="title function_">overload</span>(<span class="string">&#x27;java.io.InputStream&#x27;</span>, <span class="string">&#x27;[C&#x27;</span>).<span class="property">implementation</span> = <span class="keyword">function</span> (<span class="params">arg0, arg1</span>) &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Java</span>.<span class="title function_">use</span>(<span class="string">&quot;android.util.Log&quot;</span>).<span class="title function_">getStackTraceString</span>(<span class="title class_">Java</span>.<span class="title function_">use</span>(<span class="string">&quot;java.lang.Throwable&quot;</span>).$new()));</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;KeyStore.load2:&quot;</span>, arg0, arg1 ? <span class="title class_">StringClass</span>.$new(arg1) : <span class="literal">null</span>);</span><br><span class="line">            <span class="keyword">if</span> (arg0)&#123;</span><br><span class="line">                <span class="keyword">var</span> file =  <span class="title class_">Java</span>.<span class="title function_">use</span>(<span class="string">&quot;java.io.File&quot;</span>).$new(<span class="string">&quot;/data/user/0/com.zj.wuaipojie/files/client&quot;</span>+<span class="string">&quot;.p12&quot;</span>);</span><br><span class="line">                <span class="keyword">var</span> out = <span class="title class_">Java</span>.<span class="title function_">use</span>(<span class="string">&quot;java.io.FileOutputStream&quot;</span>).$new(file);</span><br><span class="line">                <span class="keyword">var</span> r;</span><br><span class="line">                <span class="keyword">while</span>( (r = arg0.<span class="title function_">read</span>(buffer)) &gt; <span class="number">0</span>)&#123;</span><br><span class="line">                    out.<span class="title function_">write</span>(buffer,<span class="number">0</span>,r)</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;证书保存成功!&quot;</span>)</span><br><span class="line">                out.<span class="title function_">close</span>()</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="variable language_">this</span>.<span class="title function_">load</span>(arg0, arg1);</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>原文链接：[<a target="_blank" rel="noopener" href="https://bbs.kanxue.com/thread-283655.htm">原创]《安卓逆向这档事》第二十一课、抓包学得好，牢饭吃得饱(中)-Android安全-看雪-安全社区|安全招聘|kanxue.com</a></p>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>UmVfX1BvaW50
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://example.com/2024/12/24/SSLnet/" title="Android安全网络通信相关">http://example.com/2024/12/24/SSLnet/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Android/" rel="tag"># Android</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2024/11/05/DS/" rel="prev" title="数据结构">
+      <i class="fa fa-chevron-left"></i> 数据结构
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2024/12/24/AndroidSecurity/" rel="next" title="一些漏洞思路和案例">
+      一些漏洞思路和案例 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#VPN%E6%A3%80%E6%B5%8B"><span class="nav-number">1.</span> <span class="nav-text">VPN检测</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SSLPinning%EF%BC%88%E5%8A%A0%E5%BC%BA%E7%89%88%E5%8D%95%E9%A1%B9%E6%A0%A1%E9%AA%8C%EF%BC%89"><span class="nav-number">2.</span> <span class="nav-text">SSLPinning（加强版单项校验）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E7%BA%B9%E6%A0%A1%E9%AA%8C"><span class="nav-number">2.1.</span> <span class="nav-text">指纹校验</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%81%E4%B9%A6%E6%A0%A1%E9%AA%8C"><span class="nav-number">2.2.</span> <span class="nav-text">证书校验</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%8C%E5%90%91%E8%AE%A4%E8%AF%81"><span class="nav-number">3.</span> <span class="nav-text">双向认证</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">UmVfX1BvaW50</p>
+  <div class="site-description" itemprop="description">Team UKFC</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">9</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">UmVfX1BvaW50</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
