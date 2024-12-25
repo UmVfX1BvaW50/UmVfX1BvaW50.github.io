@@ -22,20 +22,22 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="-">
+  <meta name="description" content="Android基础">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android基础">
 <meta property="og:url" content="http://example.com/2024/12/25/ComponentLifecycles/index.html">
 <meta property="og:site_name" content="UmVfX1BvaW50&#39;s Blog">
-<meta property="og:description" content="-">
+<meta property="og:description" content="Android基础">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://source.android.google.cn/static/images/android-stack.svg?hl=zh-cn">
 <meta property="og:image" content="https://developer.android.google.cn/guide/components/images/activity_lifecycle.png?hl=zh-cn">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1981935-bd709d5989105a12.png">
 <meta property="article:published_time" content="2024-12-25T03:25:24.716Z">
-<meta property="article:modified_time" content="2024-12-25T06:18:43.859Z">
+<meta property="article:modified_time" content="2024-12-25T10:31:56.648Z">
 <meta property="article:author" content="UmVfX1BvaW50">
 <meta property="article:tag" content="Android">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://developer.android.google.cn/guide/components/images/activity_lifecycle.png?hl=zh-cn">
+<meta name="twitter:image" content="https://source.android.google.cn/static/images/android-stack.svg?hl=zh-cn">
 
 <link rel="canonical" href="http://example.com/2024/12/25/ComponentLifecycles/">
 
@@ -132,11 +134,6 @@
     <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
 
   </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
-
-  </li>
   </ul>
 </nav>
 
@@ -203,14 +200,72 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>- </p>
-  <span id="more"></span>
-
-
+        <ul>
+<li><p>Android基础</p>
+<span id="more"></span></li>
+</ul>
 <HR color="red"></HR>
 
-
-
+<h1 id="系统架构"><a href="#系统架构" class="headerlink" title="系统架构"></a>系统架构</h1><p><img src="https://source.android.google.cn/static/images/android-stack.svg?hl=zh-cn" alt="AOSP 软件堆栈架构。"></p>
+<p>通常来讲会被分成五层</p>
+<ol>
+<li>系统应用层</li>
+<li>应用框架层</li>
+<li>native库以及Android运行时<ul>
+<li>Native C&#x2F;C++ Libraries:C&#x2F;C++程序库</li>
+<li>Dalvik虚拟机</li>
+</ul>
+</li>
+<li>硬件抽象层<ul>
+<li>HAL</li>
+</ul>
+</li>
+<li>linux内核层<ul>
+<li>IPC（Binder）</li>
+</ul>
+</li>
+</ol>
+<h1 id="Android文件目录结构"><a href="#Android文件目录结构" class="headerlink" title="Android文件目录结构"></a>Android文件目录结构</h1><ol>
+<li>assets<ul>
+<li>静态文件，apk所使用的各种资源，比如图片、视频等等，通过API获取</li>
+</ul>
+</li>
+<li>res<ul>
+<li>编译后的资源文件</li>
+</ul>
+</li>
+<li>lib<ul>
+<li>so动态链接库，用于底层的一些调用</li>
+</ul>
+</li>
+<li>dex<ul>
+<li>虚拟机可执行文件，主要逆向目标</li>
+</ul>
+</li>
+<li>META-INF<ul>
+<li>数字签名，用于校验apk是否被篡改</li>
+</ul>
+</li>
+<li>AndroidManifest.xml<ul>
+<li>一个应用程序的配置清单，声明权限、组件等的基本信息</li>
+</ul>
+</li>
+<li>resources.arsc<ul>
+<li>编译后资源的位置与id之间的映射关系</li>
+</ul>
+</li>
+</ol>
+<h1 id="Android启动流程"><a href="#Android启动流程" class="headerlink" title="Android启动流程"></a>Android启动流程</h1><ul>
+<li>[Android启动过程-万字长文(Android14) - 柳云居士 - 博客园](<a target="_blank" rel="noopener" href="https://www.cnblogs.com/anywherego/p/18221943#:~:text=1">https://www.cnblogs.com/anywherego/p/18221943#:~:text=1</a> 1.引导加载程序（Bootloader）启动： 当设备上电或者重启时，首先会由引导加载程序负责启动。 … 2 2.内核加载： 引导加载程序会根据预定义的配置从设备存储中加载操作系统内核。 …,6 6.启动系统服务： 在Zygote进程启动后，还会启动一系列系统服务，例如SurfaceFlinger、ActivityManager、PackageManager等。 … 7 7.启动桌面程序： 一旦系统服务启动完成，Android系统就处于可用状态。 )</li>
+</ul>
+<h1 id="APP安装过程"><a href="#APP安装过程" class="headerlink" title="APP安装过程"></a>APP安装过程</h1><p><strong>system&#x2F;app</strong>         存放系统自带的应用程序</p>
+<p><strong>data&#x2F;app</strong>              用户程序安装的目录</p>
+<p><strong>data&#x2F;data</strong>            存放应用程序的数据</p>
+<ol>
+<li>复制APK安装包到data&#x2F;app目录下</li>
+<li>解压并扫描安装包，把dex文件(Dalvik字节码)保存到dalvik-cache目录</li>
+<li>在data&#x2F;data目录下创建对应的应用数据目录</li>
+</ol>
 <h1 id="Activity生命周期"><a href="#Activity生命周期" class="headerlink" title="Activity生命周期"></a>Activity生命周期</h1><p><img src="https://developer.android.google.cn/guide/components/images/activity_lifecycle.png?hl=zh-cn" alt="img"></p>
 <p>**onCreate()**：</p>
 <ul>
@@ -223,6 +278,34 @@
 <p><strong>onPause()：</strong>发生中断时（准备启动或者恢复另一个activity时）调用，进入暂停状态。可以编写一些保存现场或者释放资源的操作。【该Activity仍然用户可见】</p>
 <p><strong>onStop()：</strong>Activity不再对用户可见时调用</p>
 <p><strong>onDestory()：</strong>Activity销毁时调用</p>
+<h1 id="Service"><a href="#Service" class="headerlink" title="Service"></a>Service</h1><p><img src="https://upload-images.jianshu.io/upload_images/1981935-bd709d5989105a12.png" alt="img"></p>
+<h2 id="Service启动"><a href="#Service启动" class="headerlink" title="Service启动"></a>Service启动</h2><h3 id="StartService方式"><a href="#StartService方式" class="headerlink" title="StartService方式"></a>StartService方式</h3><ul>
+<li>无限期运行，需要stopService或者stopSelf方法终止</li>
+<li>onCreate() –&gt; onStartCommand() –&gt; onDestroy()</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyService</span> <span class="keyword">extends</span> <span class="title class_">Service</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">MyService</span><span class="params">()</span> &#123;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//startService()【第一次】后执行onCreate回调</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onCreate</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>.onCreate();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//startService()方法执行时调用</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">onStartCommand</span><span class="params">(Intent intent, <span class="type">int</span> flags, <span class="type">int</span> startId)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">super</span>.onStartCommand(intent, flags, startId);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//无论是否使用都必须重写的方法</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> IBinder <span class="title function_">onBind</span><span class="params">(Intent intent)</span> &#123;</span><br><span class="line">        <span class="comment">// <span class="doctag">TODO:</span> Return the communication channel to the service.</span></span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">UnsupportedOperationException</span>(<span class="string">&quot;Not yet implemented&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//销毁</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onDestroy</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>.onDestroy();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="BindService方式"><a href="#BindService方式" class="headerlink" title="BindService方式"></a>BindService方式</h3><ul>
+<li>C&#x2F;S模式。service作为server，组件作为client。单个service，多个client</li>
+<li>client通过Ibinder接口获取service实例</li>
+<li>onCreate() -&gt; onBind() -&gt; onUnbind() -&gt; onDestroy()</li>
+</ul>
+<p><strong>Server端</strong></p>
+<ul>
+<li>service的onBind方法中返回IBinder类型实例（也就是service实例）</li>
+</ul>
+<p><strong>Client端</strong></p>
+<ol>
+<li>创建<code>ServiceConnection</code>类型实例，重写<code>onServiceConnected()</code>方法和<code>onServiceDisconnected()</code>方法</li>
+<li>执行<code>onServiceConnected</code>回调时，通过<code>IBinder</code>得到<code>Service</code>实例对象</li>
+<li>执行<code>onServiceDisconnected</code>回调时，<code>client</code>与<code>Service</code>断开连接</li>
+</ol>
+<p><strong>销毁问题</strong></p>
+<ul>
+<li>client销毁时自动与service解除绑定</li>
+<li>client调用Context的unBindService()方法解除绑定</li>
+<li>没有任何client与service绑定时service自动销毁</li>
+</ul>
 <h1 id="Broadcast-Receiver"><a href="#Broadcast-Receiver" class="headerlink" title="Broadcast Receiver"></a>Broadcast Receiver</h1><ul>
 <li>广播发送者 广播接收者 AMS（Binder机制）<ol>
 <li>接收者向AMS注册</li>
@@ -257,11 +340,7 @@
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//实现广播接收的开关</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">onStart</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>.onStart();</span><br><span class="line">        receiver = <span class="keyword">new</span> <span class="title class_">Receiver</span>();</span><br><span class="line"> </span><br><span class="line">        <span class="type">IntentFilter</span> <span class="variable">filter</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">IntentFilter</span>(Receiver.action);     <span class="comment">//创建过滤器，只接收Receiver.action的广播</span></span><br><span class="line">        filter.setPriority(<span class="number">8</span>);                                       <span class="comment">//设置优先级</span></span><br><span class="line">        registerReceiver(receiver, filter);                          <span class="comment">//注册接收器</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
-
-
-
-
-<h2 id="URL格式完整"><a href="#URL格式完整" class="headerlink" title="URL格式完整"></a>URL格式完整</h2><p><scheme>:&#x2F;&#x2F;<user>:<password>@<host>:<port>&#x2F;<path>:<params>?<query>#<frag></p>
+<h1 id="URL格式完整"><a href="#URL格式完整" class="headerlink" title="URL格式完整"></a>URL格式完整</h1><p><scheme>:&#x2F;&#x2F;<user>:<password>@<host>:<port>&#x2F;<path>:<params>?<query>#<frag></p>
 <ol>
 <li><ol>
 <li>scheme：方案，访问服务器以获取资源时要使用哪种协议，如：http</li>
@@ -382,7 +461,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Activity%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="nav-number">1.</span> <span class="nav-text">Activity生命周期</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Broadcast-Receiver"><span class="nav-number">2.</span> <span class="nav-text">Broadcast Receiver</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%E5%B9%BF%E6%92%AD%E6%8E%A5%E6%94%B6%E7%B1%BB"><span class="nav-number">2.0.1.</span> <span class="nav-text">定义广播接收类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E6%B3%A8%E5%86%8C%E5%8F%91%E9%80%81%E5%B9%BF%E6%92%AD"><span class="nav-number">2.0.2.</span> <span class="nav-text">动态注册发送广播</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9D%99%E6%80%81%E6%B3%A8%E5%86%8C%E5%8F%91%E9%80%81%E5%B9%BF%E6%92%AD"><span class="nav-number">2.0.3.</span> <span class="nav-text">静态注册发送广播</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%89%E5%BA%8F%E5%B9%BF%E6%92%AD"><span class="nav-number">2.0.4.</span> <span class="nav-text">有序广播</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#URL%E6%A0%BC%E5%BC%8F%E5%AE%8C%E6%95%B4"><span class="nav-number">2.1.</span> <span class="nav-text">URL格式完整</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84"><span class="nav-number">1.</span> <span class="nav-text">系统架构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Android%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84"><span class="nav-number">2.</span> <span class="nav-text">Android文件目录结构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Android%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B"><span class="nav-number">3.</span> <span class="nav-text">Android启动流程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#APP%E5%AE%89%E8%A3%85%E8%BF%87%E7%A8%8B"><span class="nav-number">4.</span> <span class="nav-text">APP安装过程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Activity%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="nav-number">5.</span> <span class="nav-text">Activity生命周期</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Service"><span class="nav-number">6.</span> <span class="nav-text">Service</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Service%E5%90%AF%E5%8A%A8"><span class="nav-number">6.1.</span> <span class="nav-text">Service启动</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#StartService%E6%96%B9%E5%BC%8F"><span class="nav-number">6.1.1.</span> <span class="nav-text">StartService方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BindService%E6%96%B9%E5%BC%8F"><span class="nav-number">6.1.2.</span> <span class="nav-text">BindService方式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Broadcast-Receiver"><span class="nav-number">7.</span> <span class="nav-text">Broadcast Receiver</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%E5%B9%BF%E6%92%AD%E6%8E%A5%E6%94%B6%E7%B1%BB"><span class="nav-number">7.0.1.</span> <span class="nav-text">定义广播接收类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E6%B3%A8%E5%86%8C%E5%8F%91%E9%80%81%E5%B9%BF%E6%92%AD"><span class="nav-number">7.0.2.</span> <span class="nav-text">动态注册发送广播</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9D%99%E6%80%81%E6%B3%A8%E5%86%8C%E5%8F%91%E9%80%81%E5%B9%BF%E6%92%AD"><span class="nav-number">7.0.3.</span> <span class="nav-text">静态注册发送广播</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%89%E5%BA%8F%E5%B9%BF%E6%92%AD"><span class="nav-number">7.0.4.</span> <span class="nav-text">有序广播</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#URL%E6%A0%BC%E5%BC%8F%E5%AE%8C%E6%95%B4"><span class="nav-number">8.</span> <span class="nav-text">URL格式完整</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -394,8 +473,7 @@
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
-          <a href="/archives/">
-        
+          <a href="/archives">
           <span class="site-state-item-count">12</span>
           <span class="site-state-item-name">日志</span>
         </a>
