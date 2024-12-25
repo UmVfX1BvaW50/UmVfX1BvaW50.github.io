@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="加固和混淆">
+<meta property="og:type" content="article">
+<meta property="og:title" content="加固与混淆">
+<meta property="og:url" content="http://example.com/2024/12/25/JiaGuHunxiao/index.html">
+<meta property="og:site_name" content="UmVfX1BvaW50&#39;s Blog">
+<meta property="og:description" content="加固和混淆">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-12-25T05:58:11.147Z">
+<meta property="article:modified_time" content="2024-12-25T06:01:22.053Z">
+<meta property="article:author" content="UmVfX1BvaW50">
+<meta property="article:tag" content="加固与混淆">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2024/12/25/JiaGuHunxiao/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>加固与混淆 | UmVfX1BvaW50's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">UmVfX1BvaW50's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/12/25/JiaGuHunxiao/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="UmVfX1BvaW50">
+      <meta itemprop="description" content="Team UKFC">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="UmVfX1BvaW50's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          加固与混淆
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CTF/" itemprop="url" rel="index"><span itemprop="name">CTF</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <ul>
+<li>加固和混淆<span id="more"></span></li>
+</ul>
+<HR color="red"></HR>
+
+<h2 id="Android反调试"><a href="#Android反调试" class="headerlink" title="Android反调试"></a>Android反调试</h2><h4 id="root检测"><a href="#root检测" class="headerlink" title="root检测"></a><strong>root检测</strong></h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="built_in">static</span> <span class="keyword">boolean</span> <span class="title function_ invoke__">isRooted</span>() &#123;</span><br><span class="line">        <span class="comment">// 检查常见的root文件</span></span><br><span class="line">        String[] rootFiles = &#123;</span><br><span class="line">                <span class="string">&quot;/system/su&quot;</span>,</span><br><span class="line">                <span class="string">&quot;/system/xbin/su&quot;</span>,</span><br><span class="line">                <span class="string">&quot;/system/bin/su&quot;</span>,</span><br><span class="line">                <span class="string">&quot;/sbin/su&quot;</span>,</span><br><span class="line">                <span class="string">&quot;/system/sbin/su&quot;</span>,</span><br><span class="line">                <span class="string">&quot;/data/local/su&quot;</span>,</span><br><span class="line">                <span class="string">&quot;/data/local/xbin/su&quot;</span>,</span><br><span class="line">                <span class="string">&quot;/data/local/bin/su&quot;</span>,</span><br><span class="line">                <span class="string">&quot;/su/bin/su&quot;</span></span><br><span class="line">        &#125;;</span><br><span class="line">        <span class="keyword">for</span> (String rootFile : rootFiles) &#123;</span><br><span class="line">            <span class="keyword">if</span> (<span class="keyword">new</span> <span class="title class_">File</span>(rootFile).<span class="title function_ invoke__">exists</span>()) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 检查是否可以执行su命令</span></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Process process = Runtime.<span class="title function_ invoke__">getRuntime</span>().<span class="title function_ invoke__">exec</span>(<span class="string">&quot;su&quot;</span>);</span><br><span class="line">            OutputStream outputStream = process.<span class="title function_ invoke__">getOutputStream</span>();</span><br><span class="line">            outputStream.<span class="title function_ invoke__">write</span>(<span class="string">&quot;exit\n&quot;</span>.<span class="title function_ invoke__">getBytes</span>());</span><br><span class="line">            outputStream.<span class="title function_ invoke__">flush</span>();</span><br><span class="line">            <span class="keyword">int</span> exitCode = process.<span class="title function_ invoke__">waitFor</span>();</span><br><span class="line">            <span class="keyword">return</span> exitCode == <span class="number">0</span>;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException | InterruptedException e) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="文件检测"><a href="#文件检测" class="headerlink" title="文件检测"></a><strong>文件检测</strong></h4><ul>
+<li>检测某一路径下是否存在调试文件</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">dir = <span class="title function_ invoke__">opendir</span>(<span class="string">&quot;/data/local/tmp&quot;</span>);       <span class="comment">//check dir</span></span><br><span class="line">pid = <span class="title function_ invoke__">getpid</span>(); <span class="comment">//获取pid</span></span><br><span class="line">v2 = pid;</span><br><span class="line"><span class="keyword">if</span> ( dir )&#123;</span><br><span class="line">    <span class="keyword">while</span> ( <span class="number">1</span> )&#123;</span><br><span class="line">        v3 = <span class="title function_ invoke__">readdir</span>(dir);</span><br><span class="line">        v4 = v3 == <span class="number">0</span>;</span><br><span class="line">        filename = (<span class="keyword">const</span> <span class="variable constant_">char</span> *)(v3 + <span class="number">19</span>);</span><br><span class="line">        <span class="keyword">if</span> ( v4 ) <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">if</span> ( !<span class="title function_ invoke__">strncmp</span>(filename, <span class="string">&quot;android_server&quot;</span>, <span class="number">0</span>xEu) )</span><br><span class="line">            <span class="title function_ invoke__">kill</span>(v2, <span class="number">9</span>);    <span class="comment">//kill debug process</span></span><br><span class="line">    &#125;</span><br><span class="line">    pid = <span class="title function_ invoke__">closedir</span>(dir, <span class="string">&quot;android_server&quot;</span>, <span class="number">14</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="端口检测"><a href="#端口检测" class="headerlink" title="端口检测"></a><strong>端口检测</strong></h4><ul>
+<li>检测app运行时是否有常用调试端口被使用</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">FILE* pfile=<span class="literal">NULL</span>;</span><br><span class="line">char buf[<span class="number">0x1000</span>]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line">char* strCatTcp= <span class="string">&quot;cat /proc/net/tcp |grep :5D8A&quot;</span>;   <span class="comment">//check tcp</span></span><br><span class="line">char* strNetstat=<span class="string">&quot;netstat |grep :23946&quot;</span>;    <span class="comment">//check the state of port </span></span><br><span class="line"><span class="comment">//calls popen(), executes a shell and runs commands </span></span><br><span class="line">pfile=<span class="title function_ invoke__">popen</span>(strCatTcp,<span class="string">&quot;r&quot;</span>);     </span><br><span class="line"><span class="keyword">int</span> pid=<span class="title function_ invoke__">getpid</span>();</span><br><span class="line"><span class="keyword">if</span>(<span class="literal">NULL</span>==pfile)&#123;</span><br><span class="line">    <span class="title function_ invoke__">printf</span>(<span class="string">&quot;fail\n&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//kill debug process</span></span><br><span class="line"><span class="keyword">while</span>(<span class="title function_ invoke__">fgets</span>(buf,<span class="title function_ invoke__">sizeof</span>(buf),pfile))&#123;</span><br><span class="line">    <span class="keyword">int</span> ret=<span class="title function_ invoke__">kill</span>(pid,SIGKILL);</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_ invoke__">pclose</span>(pfile);</span><br></pre></td></tr></table></figure>
+
+<h4 id="进程名称检测"><a href="#进程名称检测" class="headerlink" title="进程名称检测"></a><strong>进程名称检测</strong></h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="variable constant_">int</span> bufsize = <span class="number">1024</span>;</span><br><span class="line">char filename[bufsize];</span><br><span class="line">char line[bufsize];</span><br><span class="line">char name[bufsize];</span><br><span class="line">char nameline[bufsize];</span><br><span class="line"><span class="keyword">int</span> pid = <span class="title function_ invoke__">getpid</span>();</span><br><span class="line"><span class="comment">//先读取Tracepid的值</span></span><br><span class="line"><span class="title function_ invoke__">sprintf</span>(filename, <span class="string">&quot;/proc/%d/status&quot;</span>, pid);</span><br><span class="line">FILE *fd=<span class="title function_ invoke__">fopen</span>(filename,<span class="string">&quot;r&quot;</span>);</span><br><span class="line"><span class="keyword">if</span>(fd!=<span class="literal">NULL</span>)&#123;</span><br><span class="line">    <span class="keyword">while</span>(<span class="title function_ invoke__">fgets</span>(line,bufsize,fd))&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="title function_ invoke__">strstr</span>(line,<span class="string">&quot;TracerPid&quot;</span>)!=<span class="literal">NULL</span>)&#123;</span><br><span class="line">            <span class="keyword">int</span> statue =<span class="title function_ invoke__">atoi</span>(&amp;line[<span class="number">10</span>]);</span><br><span class="line">            <span class="keyword">if</span>(statue!=<span class="number">0</span>)&#123;</span><br><span class="line">                <span class="title function_ invoke__">sprintf</span>(name,<span class="string">&quot;/proc/%d/cmdline&quot;</span>,statue);</span><br><span class="line">                FILE *fdname=<span class="title function_ invoke__">fopen</span>(name,<span class="string">&quot;r&quot;</span>);</span><br><span class="line">                <span class="keyword">if</span>(fdname!= <span class="literal">NULL</span>)&#123;</span><br><span class="line">                    <span class="keyword">while</span>(<span class="title function_ invoke__">fgets</span>(nameline,bufsize,fdname))</span><br><span class="line">                        <span class="keyword">if</span>(<span class="title function_ invoke__">strstr</span>(nameline,<span class="string">&quot;android_server&quot;</span>)!=<span class="literal">NULL</span>)</span><br><span class="line">                            <span class="keyword">int</span> ret=<span class="title function_ invoke__">kill</span>(pid,SIGKILL);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="title function_ invoke__">fclose</span>(fdname);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_ invoke__">fclose</span>(fd);</span><br></pre></td></tr></table></figure>
+
+<h4 id="轮循检测"><a href="#轮循检测" class="headerlink" title="轮循检测"></a><strong>轮循检测</strong></h4><ul>
+<li>同样是对tracepid值的检测</li>
+<li>缺点是如果tracepid不为0会一直消耗内存</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> <span class="title function_ invoke__">anti_debugger</span>()    <span class="comment">//创建进程</span></span><br><span class="line">&#123;</span><br><span class="line">    pthread_t tid;</span><br><span class="line">    <span class="title function_ invoke__">pthread_create</span>(&amp;tid,<span class="literal">NULL</span>,&amp;anti_debug_thread,<span class="literal">NULL</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">void</span> *<span class="title function_ invoke__">anti_debugger_thread</span>(<span class="keyword">void</span>*data)   <span class="comment">//如果tracepid不为0就死循环阻止程序继续执行</span></span><br><span class="line">&#123;</span><br><span class="line">    pid_t pid=<span class="title function_ invoke__">getpid</span>();</span><br><span class="line">    <span class="keyword">while</span>(<span class="literal">true</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="title function_ invoke__">check_debugger</span>(pid)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">bool</span> <span class="title function_ invoke__">check_debugger</span>(pid_t pid)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">const</span> <span class="variable constant_">int</span> pathSize=<span class="number">256</span>;</span><br><span class="line">    <span class="keyword">const</span> <span class="variable constant_">int</span> bufSize=<span class="number">1024</span>;</span><br><span class="line">    char path[pathSize];</span><br><span class="line">    char line[bufSize];</span><br><span class="line">    <span class="title function_ invoke__">snprintf</span>(path,<span class="title function_ invoke__">sizeof</span>(path)-<span class="number">1</span>,<span class="string">&quot;/proc/%d/status&quot;</span>,pid);</span><br><span class="line">    <span class="keyword">bool</span> result =<span class="literal">true</span>;</span><br><span class="line">    FILE *fp=<span class="title function_ invoke__">fopen</span>(path,<span class="string">&quot;rt&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span>(fp!=<span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">while</span>(<span class="title function_ invoke__">fgets</span>(line,<span class="title function_ invoke__">sizeof</span>(line),fp))</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(<span class="title function_ invoke__">strncmp</span>(line,TRACERPID,TRACERPID_LEN)==<span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                pid_t tracerPid=<span class="number">0</span>;</span><br><span class="line">                <span class="title function_ invoke__">sscanf</span>(line,<span class="string">&quot;%*s%d&quot;</span>,&amp;tracerPid);</span><br><span class="line">                <span class="keyword">if</span>(!tracerPid)</span><br><span class="line">                result =<span class="literal">false</span></span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="title function_ invoke__">fclose</span>(fp);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="父子进程保护"><a href="#父子进程保护" class="headerlink" title="父子进程保护"></a><strong>父子进程保护</strong></h4><ul>
+<li>利用同一时刻一个进程只能被一个进程附加，自己创建一个子进程调试自己，从而阻止其他调试</li>
+</ul>
+<h4 id="Java"><a href="#Java" class="headerlink" title="Java"></a><strong>Java</strong></h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_ invoke__">attachBaseContext</span>(Context context) &#123;</span><br><span class="line">        super.<span class="title function_ invoke__">attachBaseContext</span>(context);</span><br><span class="line">        this.mContext = context;</span><br><span class="line">        AppInfo.APKPATH = context.<span class="title function_ invoke__">getApplicationInfo</span>().sourceDir;</span><br><span class="line">        AppInfo.DATAPATH = context.<span class="title function_ invoke__">getApplicationInfo</span>().dataDir;</span><br><span class="line">        <span class="keyword">if</span> (!Debug.<span class="title function_ invoke__">isDebuggerConnected</span>()) &#123;     <span class="comment">//isDebuggerConnected()</span></span><br><span class="line">            <span class="title function_ invoke__">loadLibrary</span>();</span><br><span class="line">            A.<span class="title function_ invoke__">a</span>(AppInfo.PKGNAME, AppInfo.APPNAME, AppInfo.APKPATH, AppInfo.DATAPATH, Build.VERSION.SDK_INT, AppInfo.REPORT_CRASH);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>UmVfX1BvaW50
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://example.com/2024/12/25/JiaGuHunxiao/" title="加固与混淆">http://example.com/2024/12/25/JiaGuHunxiao/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%8A%A0%E5%9B%BA%E4%B8%8E%E6%B7%B7%E6%B7%86/" rel="tag"># 加固与混淆</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2024/12/25/AndroidScan/" rel="prev" title="Android漏扫">
+      <i class="fa fa-chevron-left"></i> Android漏扫
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2024/12/25/Hormony/" rel="next" title="鸿蒙安全">
+      鸿蒙安全 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Android%E5%8F%8D%E8%B0%83%E8%AF%95"><span class="nav-number">1.</span> <span class="nav-text">Android反调试</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#root%E6%A3%80%E6%B5%8B"><span class="nav-number">1.0.1.</span> <span class="nav-text">root检测</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E6%A3%80%E6%B5%8B"><span class="nav-number">1.0.2.</span> <span class="nav-text">文件检测</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AB%AF%E5%8F%A3%E6%A3%80%E6%B5%8B"><span class="nav-number">1.0.3.</span> <span class="nav-text">端口检测</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%9B%E7%A8%8B%E5%90%8D%E7%A7%B0%E6%A3%80%E6%B5%8B"><span class="nav-number">1.0.4.</span> <span class="nav-text">进程名称检测</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BD%AE%E5%BE%AA%E6%A3%80%E6%B5%8B"><span class="nav-number">1.0.5.</span> <span class="nav-text">轮循检测</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%88%B6%E5%AD%90%E8%BF%9B%E7%A8%8B%E4%BF%9D%E6%8A%A4"><span class="nav-number">1.0.6.</span> <span class="nav-text">父子进程保护</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Java"><span class="nav-number">1.0.7.</span> <span class="nav-text">Java</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">UmVfX1BvaW50</p>
+  <div class="site-description" itemprop="description">Team UKFC</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">UmVfX1BvaW50</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
