@@ -25,17 +25,17 @@
   <meta name="description" content="Android安全网络通信相关">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android安全网络通信相关">
-<meta property="og:url" content="http://example.com/2024/12/24/SSLnet/index.html">
+<meta property="og:url" content="http://example.com/SSLnet/index.html">
 <meta property="og:site_name" content="UmVfX1BvaW50&#39;s Blog">
 <meta property="og:description" content="Android安全网络通信相关">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-12-24T06:37:15.728Z">
-<meta property="article:modified_time" content="2024-12-26T03:52:02.370Z">
+<meta property="article:modified_time" content="2024-12-26T07:11:36.814Z">
 <meta property="article:author" content="UmVfX1BvaW50">
 <meta property="article:tag" content="Android">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/2024/12/24/SSLnet/">
+<link rel="canonical" href="http://example.com/SSLnet/">
 
 
 <script id="page-configurations">
@@ -158,12 +158,12 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/12/24/SSLnet/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/SSLnet/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="UmVfX1BvaW50">
-      <meta itemprop="description" content="Team UKFC">
+      <meta itemprop="description" content="Team UKFC Mobile | Re">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -259,8 +259,7 @@
 
 
 <p>原文链接：[<a target="_blank" rel="noopener" href="https://bbs.kanxue.com/thread-283655.htm">原创]《安卓逆向这档事》第二十一课、抓包学得好，牢饭吃得饱(中)-Android安全-看雪-安全社区|安全招聘|kanxue.com</a></p>
-<p>Socket通信Hook</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># tcp</span></span><br><span class="line">socketRead0  socketWrite0</span><br><span class="line">recvfrom  sendto</span><br><span class="line"><span class="comment"># udp</span></span><br><span class="line">sendtoBytes  readBytes</span><br><span class="line">recvfrom  sendto</span><br><span class="line"><span class="comment"># ssl</span></span><br><span class="line">SSL_write  SSL_read【find SSL库函数】</span><br></pre></td></tr></table></figure>
+<h2 id="Socket通信Hook"><a href="#Socket通信Hook" class="headerlink" title="Socket通信Hook"></a>Socket通信Hook</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># tcp</span></span><br><span class="line">socketRead0  socketWrite0</span><br><span class="line">recvfrom  sendto</span><br><span class="line"><span class="comment"># udp</span></span><br><span class="line">sendtoBytes  readBytes</span><br><span class="line">recvfrom  sendto</span><br><span class="line"><span class="comment"># ssl</span></span><br><span class="line">SSL_write  SSL_read【find SSL库函数】</span><br></pre></td></tr></table></figure>
 
 
     </div>
@@ -268,23 +267,6 @@
     
     
     
-        
-
-<div>
-<ul class="post-copyright">
-  <li class="post-copyright-author">
-    <strong>本文作者： </strong>UmVfX1BvaW50
-  </li>
-  <li class="post-copyright-link">
-    <strong>本文链接：</strong>
-    <a href="http://example.com/2024/12/24/SSLnet/" title="Android安全网络通信相关">http://example.com/2024/12/24/SSLnet/</a>
-  </li>
-  <li class="post-copyright-license">
-    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
-  </li>
-</ul>
-</div>
-
 
       <footer class="post-footer">
           <div class="post-tags">
@@ -297,11 +279,11 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2024/09/09/Tool/" rel="prev" title="安卓常用工具">
+    <a href="/Tool/" rel="prev" title="安卓常用工具">
       <i class="fa fa-chevron-left"></i> 安卓常用工具
     </a></div>
       <div class="post-nav-item">
-    <a href="/2024/12/24/AndroidSecurity/" rel="next" title="Android一些漏洞思路和案例">
+    <a href="/AndroidSecurity/" rel="next" title="Android一些漏洞思路和案例">
       Android一些漏洞思路和案例 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
@@ -362,14 +344,14 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#VPN%E6%A3%80%E6%B5%8B"><span class="nav-number">1.</span> <span class="nav-text">VPN检测</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SSLPinning%EF%BC%88%E5%8A%A0%E5%BC%BA%E7%89%88%E5%8D%95%E5%90%91%E6%A0%A1%E9%AA%8C%EF%BC%89"><span class="nav-number">2.</span> <span class="nav-text">SSLPinning（加强版单向校验）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E7%BA%B9%E6%A0%A1%E9%AA%8C"><span class="nav-number">2.1.</span> <span class="nav-text">指纹校验</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%81%E4%B9%A6%E6%A0%A1%E9%AA%8C"><span class="nav-number">2.2.</span> <span class="nav-text">证书校验</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%8C%E5%90%91%E8%AE%A4%E8%AF%81"><span class="nav-number">3.</span> <span class="nav-text">双向认证</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#VPN%E6%A3%80%E6%B5%8B"><span class="nav-number">1.</span> <span class="nav-text">VPN检测</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SSLPinning%EF%BC%88%E5%8A%A0%E5%BC%BA%E7%89%88%E5%8D%95%E5%90%91%E6%A0%A1%E9%AA%8C%EF%BC%89"><span class="nav-number">2.</span> <span class="nav-text">SSLPinning（加强版单向校验）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E7%BA%B9%E6%A0%A1%E9%AA%8C"><span class="nav-number">2.1.</span> <span class="nav-text">指纹校验</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%81%E4%B9%A6%E6%A0%A1%E9%AA%8C"><span class="nav-number">2.2.</span> <span class="nav-text">证书校验</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%8C%E5%90%91%E8%AE%A4%E8%AF%81"><span class="nav-number">3.</span> <span class="nav-text">双向认证</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Socket%E9%80%9A%E4%BF%A1Hook"><span class="nav-number">4.</span> <span class="nav-text">Socket通信Hook</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
   <p class="site-author-name" itemprop="name">UmVfX1BvaW50</p>
-  <div class="site-description" itemprop="description">Team UKFC</div>
+  <div class="site-description" itemprop="description">Team UKFC Mobile | Re</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
