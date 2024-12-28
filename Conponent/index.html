@@ -33,7 +33,7 @@
 <meta property="og:image" content="https://developer.android.google.cn/guide/components/images/activity_lifecycle.png?hl=zh-cn">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1981935-bd709d5989105a12.png">
 <meta property="article:published_time" content="2024-12-26T08:38:40.377Z">
-<meta property="article:modified_time" content="2024-12-26T08:38:56.878Z">
+<meta property="article:modified_time" content="2024-12-28T08:09:35.498Z">
 <meta property="article:author" content="UmVfX1BvaW50">
 <meta property="article:tag" content="Android">
 <meta name="twitter:card" content="summary">
@@ -266,7 +266,7 @@
 <li>解压并扫描安装包，把dex文件(Dalvik字节码)保存到dalvik-cache目录</li>
 <li>在data&#x2F;data目录下创建对应的应用数据目录</li>
 </ol>
-<h1 id="Activity生命周期"><a href="#Activity生命周期" class="headerlink" title="Activity生命周期"></a>Activity生命周期</h1><p><img src="https://developer.android.google.cn/guide/components/images/activity_lifecycle.png?hl=zh-cn" alt="img"></p>
+<h1 id="Activity生命周期"><a href="#Activity生命周期" class="headerlink" title="Activity生命周期"></a>Activity生命周期</h1><h3 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h3><p><img src="https://developer.android.google.cn/guide/components/images/activity_lifecycle.png?hl=zh-cn" alt="img"></p>
 <p>**onCreate()**：</p>
 <ul>
 <li>必须实现，当然也是对activity进行逆向的核心破局点</li>
@@ -274,12 +274,38 @@
 </ul>
 <p><strong>onStart()：</strong>Activity置于栈顶可见但无焦点状态时调用</p>
 <p><strong>onRestart()：</strong>Activity再次回到栈顶可见时调用</p>
-<p><strong>onResume()：</strong>在Activity可见并且有焦点时调用</p>
+<p><strong>onResume()【活动状态】：</strong>在Activity可见并且有焦点时调用</p>
 <p><strong>onPause()：</strong>发生中断时（准备启动或者恢复另一个activity时）调用，进入暂停状态。可以编写一些保存现场或者释放资源的操作。【该Activity仍然用户可见】</p>
 <p><strong>onStop()：</strong>Activity不再对用户可见时调用</p>
 <p><strong>onDestory()：</strong>Activity销毁时调用</p>
+<h3 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h3><ul>
+<li>打开新Activity。原Activity: onPause()–&gt;onStop()</li>
+<li>回到原Activity。onRestart()–&gt;onStart()–&gt;onResume()</li>
+</ul>
+<h3 id="切屏"><a href="#切屏" class="headerlink" title="切屏"></a>切屏</h3><p><strong>不配置参数</strong></p>
+<ul>
+<li>重走生命周期</li>
+<li>onPause()–&gt;onSaveInstanceState()–&gt;onStop()–&gt;onDestroy()–&gt;onCreate()–&gt;onStart()–&gt;onRestoreInstanceState–&gt;onResume()</li>
+<li>onSaveInstanceState()和onRestoreInstanceState用于Activity异常退出时候保存和恢复Activity状态</li>
+</ul>
+<p><strong>配置参数</strong></p>
+<blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 选择在什么情况下不重新启动生命周期，而是执行onConfigurationChanged方法</span></span><br><span class="line">android:configChanges = <span class="string">&quot;orientation| screenSize&quot;</span>     <span class="comment"># 方向旋转 | 大小变化</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<h3 id="四种启动模式"><a href="#四种启动模式" class="headerlink" title="四种启动模式"></a>四种启动模式</h3><h4 id="Standard"><a href="#Standard" class="headerlink" title="Standard"></a>Standard</h4><ul>
+<li>先进后出，Activity放入栈顶</li>
+</ul>
+<h4 id="SingleTop【栈顶复用模式-单顶模式】"><a href="#SingleTop【栈顶复用模式-单顶模式】" class="headerlink" title="SingleTop【栈顶复用模式&#x2F;单顶模式】"></a>SingleTop【栈顶复用模式&#x2F;单顶模式】</h4><ul>
+<li>如果当前返回栈的顶部不存在该Activity，则新建该Activity并放入栈顶</li>
+<li>如果当前返回栈的顶部存在Activity的实例，则调用该实例的onNewIntent()方法向其传送Intent，不创建该Activity的新实例</li>
+</ul>
+<h4 id="SingleTask【栈内复用模式-单任务模式】"><a href="#SingleTask【栈内复用模式-单任务模式】" class="headerlink" title="SingleTask【栈内复用模式&#x2F;单任务模式】"></a>SingleTask【栈内复用模式&#x2F;单任务模式】</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 一个栈中只有一个指定的Activity</span></span><br><span class="line">&lt;activity android:name=<span class="string">&quot;Activity&quot;</span></span><br><span class="line">	android:launchMode=<span class="string">&quot;singleTask&quot;</span></span><br><span class="line">	android:taskAffinity=<span class="string">&quot;com.android.task&quot;</span></span><br><span class="line">&lt;/activity&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="SingleInstance【单例模式】"><a href="#SingleInstance【单例模式】" class="headerlink" title="SingleInstance【单例模式】"></a>SingleInstance【单例模式】</h4><ul>
+<li>Singletask的升级版，系统直接创建一个新的返回栈并创建Activity的新实例置于新Task返回栈中</li>
+</ul>
 <h1 id="Service"><a href="#Service" class="headerlink" title="Service"></a>Service</h1><p><img src="https://upload-images.jianshu.io/upload_images/1981935-bd709d5989105a12.png" alt="img"></p>
-<h2 id="Service启动"><a href="#Service启动" class="headerlink" title="Service启动"></a>Service启动</h2><h3 id="StartService方式"><a href="#StartService方式" class="headerlink" title="StartService方式"></a>StartService方式</h3><ul>
+<h2 id="Service两种启动方式"><a href="#Service两种启动方式" class="headerlink" title="Service两种启动方式"></a>Service两种启动方式</h2><h3 id="StartService方式"><a href="#StartService方式" class="headerlink" title="StartService方式"></a>StartService方式</h3><ul>
 <li>无限期运行，需要stopService或者stopSelf方法终止</li>
 <li>onCreate() –&gt; onStartCommand() –&gt; onDestroy()</li>
 </ul>
@@ -306,6 +332,21 @@
 <li>client调用Context的unBindService()方法解除绑定</li>
 <li>没有任何client与service绑定时service自动销毁</li>
 </ul>
+<h2 id="Service保活"><a href="#Service保活" class="headerlink" title="Service保活"></a>Service保活</h2><ul>
+<li>自定义系统服务</li>
+<li>设置成前台服务</li>
+<li>注册为系统服务</li>
+<li>第三方库来保活，如HelloDaemon</li>
+<li>双service轮询检测互相拉起</li>
+<li>START_STICKY（onStartCommand方法中），kill 后会被重启（等待5秒左右），重传Intent，保持与重启前一样</li>
+</ul>
+<h2 id="进程优先级"><a href="#进程优先级" class="headerlink" title="进程优先级"></a>进程优先级</h2><ol>
+<li>前台进程</li>
+<li>可见进程。对用户可见但不能交互的Activity和绑定在上面的Service</li>
+<li>服务进程。startService运行的服务</li>
+<li>后台进程。执行了onStop方法停止的程序。内存不够时被杀死</li>
+<li>空进程</li>
+</ol>
 <h1 id="Broadcast-Receiver"><a href="#Broadcast-Receiver" class="headerlink" title="Broadcast Receiver"></a>Broadcast Receiver</h1><ul>
 <li>广播发送者 广播接收者 AMS（Binder机制）<ol>
 <li>接收者向AMS注册</li>
@@ -460,7 +501,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84"><span class="nav-number">1.</span> <span class="nav-text">系统架构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Android%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84"><span class="nav-number">2.</span> <span class="nav-text">Android文件目录结构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Android%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B"><span class="nav-number">3.</span> <span class="nav-text">Android启动流程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#APP%E5%AE%89%E8%A3%85%E8%BF%87%E7%A8%8B"><span class="nav-number">4.</span> <span class="nav-text">APP安装过程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Activity%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="nav-number">5.</span> <span class="nav-text">Activity生命周期</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Service"><span class="nav-number">6.</span> <span class="nav-text">Service</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Service%E5%90%AF%E5%8A%A8"><span class="nav-number">6.1.</span> <span class="nav-text">Service启动</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#StartService%E6%96%B9%E5%BC%8F"><span class="nav-number">6.1.1.</span> <span class="nav-text">StartService方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BindService%E6%96%B9%E5%BC%8F"><span class="nav-number">6.1.2.</span> <span class="nav-text">BindService方式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Broadcast-Receiver"><span class="nav-number">7.</span> <span class="nav-text">Broadcast Receiver</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%E5%B9%BF%E6%92%AD%E6%8E%A5%E6%94%B6%E7%B1%BB"><span class="nav-number">7.0.1.</span> <span class="nav-text">定义广播接收类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E6%B3%A8%E5%86%8C%E5%8F%91%E9%80%81%E5%B9%BF%E6%92%AD"><span class="nav-number">7.0.2.</span> <span class="nav-text">动态注册发送广播</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9D%99%E6%80%81%E6%B3%A8%E5%86%8C%E5%8F%91%E9%80%81%E5%B9%BF%E6%92%AD"><span class="nav-number">7.0.3.</span> <span class="nav-text">静态注册发送广播</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%89%E5%BA%8F%E5%B9%BF%E6%92%AD"><span class="nav-number">7.0.4.</span> <span class="nav-text">有序广播</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Content-Provider"><span class="nav-number">7.1.</span> <span class="nav-text">Content Provider</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Native%E5%87%BD%E6%95%B0%E5%8A%A8%E9%9D%99%E6%80%81%E6%B3%A8%E5%86%8C"><span class="nav-number">8.</span> <span class="nav-text">Native函数动静态注册</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9D%99%E6%80%81%E6%B3%A8%E5%86%8C"><span class="nav-number">8.0.1.</span> <span class="nav-text">静态注册</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E6%B3%A8%E5%86%8C"><span class="nav-number">8.0.2.</span> <span class="nav-text">动态注册</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#URL%E6%A0%BC%E5%BC%8F%E5%AE%8C%E6%95%B4"><span class="nav-number">9.</span> <span class="nav-text">URL格式完整</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84"><span class="nav-number">1.</span> <span class="nav-text">系统架构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Android%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84"><span class="nav-number">2.</span> <span class="nav-text">Android文件目录结构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Android%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B"><span class="nav-number">3.</span> <span class="nav-text">Android启动流程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#APP%E5%AE%89%E8%A3%85%E8%BF%87%E7%A8%8B"><span class="nav-number">4.</span> <span class="nav-text">APP安装过程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Activity%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="nav-number">5.</span> <span class="nav-text">Activity生命周期</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0"><span class="nav-number">5.0.1.</span> <span class="nav-text">简述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%BA%E6%99%AF"><span class="nav-number">5.0.2.</span> <span class="nav-text">场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%87%E5%B1%8F"><span class="nav-number">5.0.3.</span> <span class="nav-text">切屏</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9B%E7%A7%8D%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F"><span class="nav-number">5.0.4.</span> <span class="nav-text">四种启动模式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Standard"><span class="nav-number">5.0.4.1.</span> <span class="nav-text">Standard</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SingleTop%E3%80%90%E6%A0%88%E9%A1%B6%E5%A4%8D%E7%94%A8%E6%A8%A1%E5%BC%8F-%E5%8D%95%E9%A1%B6%E6%A8%A1%E5%BC%8F%E3%80%91"><span class="nav-number">5.0.4.2.</span> <span class="nav-text">SingleTop【栈顶复用模式&#x2F;单顶模式】</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SingleTask%E3%80%90%E6%A0%88%E5%86%85%E5%A4%8D%E7%94%A8%E6%A8%A1%E5%BC%8F-%E5%8D%95%E4%BB%BB%E5%8A%A1%E6%A8%A1%E5%BC%8F%E3%80%91"><span class="nav-number">5.0.4.3.</span> <span class="nav-text">SingleTask【栈内复用模式&#x2F;单任务模式】</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SingleInstance%E3%80%90%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%E3%80%91"><span class="nav-number">5.0.4.4.</span> <span class="nav-text">SingleInstance【单例模式】</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Service"><span class="nav-number">6.</span> <span class="nav-text">Service</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Service%E4%B8%A4%E7%A7%8D%E5%90%AF%E5%8A%A8%E6%96%B9%E5%BC%8F"><span class="nav-number">6.1.</span> <span class="nav-text">Service两种启动方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#StartService%E6%96%B9%E5%BC%8F"><span class="nav-number">6.1.1.</span> <span class="nav-text">StartService方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BindService%E6%96%B9%E5%BC%8F"><span class="nav-number">6.1.2.</span> <span class="nav-text">BindService方式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Service%E4%BF%9D%E6%B4%BB"><span class="nav-number">6.2.</span> <span class="nav-text">Service保活</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9B%E7%A8%8B%E4%BC%98%E5%85%88%E7%BA%A7"><span class="nav-number">6.3.</span> <span class="nav-text">进程优先级</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Broadcast-Receiver"><span class="nav-number">7.</span> <span class="nav-text">Broadcast Receiver</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%E5%B9%BF%E6%92%AD%E6%8E%A5%E6%94%B6%E7%B1%BB"><span class="nav-number">7.0.1.</span> <span class="nav-text">定义广播接收类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E6%B3%A8%E5%86%8C%E5%8F%91%E9%80%81%E5%B9%BF%E6%92%AD"><span class="nav-number">7.0.2.</span> <span class="nav-text">动态注册发送广播</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9D%99%E6%80%81%E6%B3%A8%E5%86%8C%E5%8F%91%E9%80%81%E5%B9%BF%E6%92%AD"><span class="nav-number">7.0.3.</span> <span class="nav-text">静态注册发送广播</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%89%E5%BA%8F%E5%B9%BF%E6%92%AD"><span class="nav-number">7.0.4.</span> <span class="nav-text">有序广播</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Content-Provider"><span class="nav-number">7.1.</span> <span class="nav-text">Content Provider</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Native%E5%87%BD%E6%95%B0%E5%8A%A8%E9%9D%99%E6%80%81%E6%B3%A8%E5%86%8C"><span class="nav-number">8.</span> <span class="nav-text">Native函数动静态注册</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9D%99%E6%80%81%E6%B3%A8%E5%86%8C"><span class="nav-number">8.0.1.</span> <span class="nav-text">静态注册</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E6%B3%A8%E5%86%8C"><span class="nav-number">8.0.2.</span> <span class="nav-text">动态注册</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#URL%E6%A0%BC%E5%BC%8F%E5%AE%8C%E6%95%B4"><span class="nav-number">9.</span> <span class="nav-text">URL格式完整</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
