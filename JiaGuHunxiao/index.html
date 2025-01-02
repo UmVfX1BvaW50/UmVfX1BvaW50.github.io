@@ -29,14 +29,14 @@
 <meta property="og:site_name" content="UmVfX1BvaW50&#39;s Blog">
 <meta property="og:description" content="Android加固和混淆[加固、反调试、llvm]">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://152.136.125.18/IMG/classloader.png">
-<meta property="og:image" content="http://152.136.125.18/IMG/dexMod.png">
+<meta property="og:image" content="http://example.com/images/classloader.png">
+<meta property="og:image" content="http://example.com/images/dexMod.png">
 <meta property="article:published_time" content="2024-12-25T05:58:11.147Z">
-<meta property="article:modified_time" content="2025-01-02T10:03:56.351Z">
+<meta property="article:modified_time" content="2025-01-02T11:42:33.482Z">
 <meta property="article:author" content="UmVfX1BvaW50">
 <meta property="article:tag" content="加固与混淆">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://152.136.125.18/IMG/classloader.png">
+<meta name="twitter:image" content="http://example.com/images/classloader.png">
 
 <link rel="canonical" href="http://example.com/JiaGuHunxiao/">
 
@@ -207,7 +207,7 @@
 <HR color="red"></HR>
 
 <h1 id="壳"><a href="#壳" class="headerlink" title="壳"></a>壳</h1><p>先来一张android classloader的图</p>
-<p><img src="http://152.136.125.18/IMG/classloader.png" alt="img"></p>
+<p><img src="/images/classloader.png" alt="img"></p>
 <h2 id="一：整体加固"><a href="#一：整体加固" class="headerlink" title="一：整体加固"></a>一：整体加固</h2><h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><blockquote>
 <p>在原有apk的基础上套一层</p>
 </blockquote>
@@ -228,7 +228,7 @@
 <blockquote>
 <p>打破原有的双亲委派关系，在系统组件类加载器PathClassLoader和BootClassLoader的中间插入我们自己的DexClassLoader</p>
 </blockquote>
-<p><img src="http://152.136.125.18/IMG/dexMod.png" alt="img"></p>
+<p><img src="/images/dexMod.png" alt="img"></p>
 <h3 id="脱壳"><a href="#脱壳" class="headerlink" title="脱壳"></a>脱壳</h3><blockquote>
 <p>思路很简单，拿到dex释放在内存中的起始地址和大小，直接dump下来就行，因此</p>
 </blockquote>
