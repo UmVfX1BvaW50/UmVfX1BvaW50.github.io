@@ -22,17 +22,23 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="Team UKFC Mobile | Re">
-<meta property="og:type" content="website">
-<meta property="og:title" content="UmVfX1BvaW50&#39;s Blog">
-<meta property="og:url" content="http://example.com/tags/llvm/index.html">
+  <meta name="description" content="设计模式、设计模型">
+<meta property="og:type" content="article">
+<meta property="og:title" content="设计模式">
+<meta property="og:url" content="http://example.com/design/index.html">
 <meta property="og:site_name" content="UmVfX1BvaW50&#39;s Blog">
-<meta property="og:description" content="Team UKFC Mobile | Re">
+<meta property="og:description" content="设计模式、设计模型">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://152.136.125.18/IMG/MVC.png">
+<meta property="og:image" content="http://152.136.125.18/IMG/MVP.png">
+<meta property="article:published_time" content="2025-01-02T08:20:24.930Z">
+<meta property="article:modified_time" content="2025-01-02T08:51:22.757Z">
 <meta property="article:author" content="UmVfX1BvaW50">
+<meta property="article:tag" content="Android Design">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://152.136.125.18/IMG/MVC.png">
 
-<link rel="canonical" href="http://example.com/tags/llvm/">
+<link rel="canonical" href="http://example.com/design/">
 
 
 <script id="page-configurations">
@@ -40,12 +46,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>标签: llvm | UmVfX1BvaW50's Blog</title>
+  <title>设计模式 | UmVfX1BvaW50's Blog</title>
   
 
 
@@ -148,51 +154,107 @@
         <div class="content-wrap">
           
 
-          <div class="content tag">
+          <div class="content post posts-expand">
             
 
+    
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h2 class="collection-header">llvm
-          <small>标签</small>
-        </h2>
-      </div>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/design/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="UmVfX1BvaW50">
+      <meta itemprop="description" content="Team UKFC Mobile | Re">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="UmVfX1BvaW50's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          设计模式
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2025</span>
+        <ul>
+<li>设计模式、设计模型<span id="more"></span></li>
+</ul>
+<HR color="red"></HR>
+
+
+<h1 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h1><p>wait…</p>
+<h1 id="设计模型"><a href="#设计模型" class="headerlink" title="设计模型"></a>设计模型</h1><h2 id="MVC"><a href="#MVC" class="headerlink" title="MVC"></a>MVC</h2><ul>
+<li><p>view – controller – model</p>
+<p><img src="http://152.136.125.18/IMG/MVC.png" alt="img"></p>
+</li>
+</ul>
+<h2 id="MVP"><a href="#MVP" class="headerlink" title="MVP"></a>MVP</h2><ul>
+<li>view – presenter – model</li>
+</ul>
+<blockquote>
+<p>为了 MVC中的model和view 解耦合，出现了presenter这个中间人，MVP中的view和model就不会直接通信了</p>
+</blockquote>
+<p><img src="http://152.136.125.18/IMG/MVP.png" alt="img"></p>
+<h2 id="MVVM"><a href="#MVVM" class="headerlink" title="MVVM"></a>MVVM</h2><ul>
+<li>Model – View – ViewModel</li>
+</ul>
+<blockquote>
+<p>View和ViewModel是多对多的关系</p>
+</blockquote>
+<blockquote>
+<p>因为MVP中的presenter更新view的代码还是比较多，所以考虑给view设置监听器，监测某个数据的变化。数据变化时候view自动更新</p>
+</blockquote>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+    
+    
+    
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2025-01-01T20:57:36+08:00"
-              content="2025-01-01">
-          01-01
-        </time>
-      </div>
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Android-Design/" rel="tag"># Android Design</a>
+          </div>
 
-      <div class="post-title">
-          <a class="post-title-link" href="/ollvm/" itemprop="url">
-            <span itemprop="name">ollvm</span>
-          </a>
-      </div>
+        
 
-    </header>
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/reflect/" rel="prev" title="Java反射">
+      <i class="fa fa-chevron-left"></i> Java反射
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
   </article>
-
-    </div>
-  </div>
   
   
-  
-
   
 
 
@@ -245,6 +307,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F"><span class="nav-number">1.</span> <span class="nav-text">设计模式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%9E%8B"><span class="nav-number">2.</span> <span class="nav-text">设计模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#MVC"><span class="nav-number">2.1.</span> <span class="nav-text">MVC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MVP"><span class="nav-number">2.2.</span> <span class="nav-text">MVP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MVVM"><span class="nav-number">2.3.</span> <span class="nav-text">MVVM</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -264,7 +327,7 @@
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
