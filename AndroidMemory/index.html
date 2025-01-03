@@ -22,23 +22,20 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="Android FrameWork">
+  <meta name="description" content="Android内存相关">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Android FrameWork">
-<meta property="og:url" content="http://example.com/AndroidFramework/index.html">
+<meta property="og:title" content="Android内存相关">
+<meta property="og:url" content="http://example.com/AndroidMemory/index.html">
 <meta property="og:site_name" content="UmVfX1BvaW50&#39;s Blog">
-<meta property="og:description" content="Android FrameWork">
+<meta property="og:description" content="Android内存相关">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/images/AMSconstruct.png">
-<meta property="og:image" content="http://example.com/images/AMS.png">
-<meta property="article:published_time" content="2025-01-02T10:15:29.726Z">
-<meta property="article:modified_time" content="2025-01-02T11:48:46.317Z">
+<meta property="article:published_time" content="2025-01-03T02:45:15.315Z">
+<meta property="article:modified_time" content="2025-01-03T02:48:31.716Z">
 <meta property="article:author" content="UmVfX1BvaW50">
-<meta property="article:tag" content="Android Design">
+<meta property="article:tag" content="Android">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/images/AMSconstruct.png">
 
-<link rel="canonical" href="http://example.com/AndroidFramework/">
+<link rel="canonical" href="http://example.com/AndroidMemory/">
 
 
 <script id="page-configurations">
@@ -51,7 +48,7 @@
   };
 </script>
 
-  <title>Android FrameWork | UmVfX1BvaW50's Blog</title>
+  <title>Android内存相关 | UmVfX1BvaW50's Blog</title>
   
 
 
@@ -161,7 +158,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/AndroidFramework/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/AndroidMemory/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -174,7 +171,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Android FrameWork
+          Android内存相关
         </h1>
 
         <div class="post-meta">
@@ -200,33 +197,53 @@
 
       
         <ul>
-<li><p>Android FrameWork</p>
+<li><p>Android内存相关</p>
 <span id="more"></span></li>
 </ul>
 <HR color="red"></HR>
 
-<h1 id="ActivityManagerService（AMS）"><a href="#ActivityManagerService（AMS）" class="headerlink" title="ActivityManagerService（AMS）"></a>ActivityManagerService（AMS）</h1><h2 id="组成"><a href="#组成" class="headerlink" title="组成"></a>组成</h2><p><img src="/../images/AMSconstruct.png" alt="img"></p>
-<blockquote>
-<p>AMS[客户端]通过Binder驱动 向serviceManager[服务端]注册</p>
+
+<h1 id="内存优化"><a href="#内存优化" class="headerlink" title="内存优化"></a>内存优化</h1><h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><h3 id="内存泄露"><a href="#内存泄露" class="headerlink" title="内存泄露"></a>内存泄露</h3><h4 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h4><blockquote>
+<p>打算释放的对象被其他对象持有强引用，无法被回收，导致内存泄露</p>
 </blockquote>
-<h2 id="结构体"><a href="#结构体" class="headerlink" title="结构体"></a>结构体</h2><p><img src="/../images/AMS.png" alt="img"></p>
-<p><strong>ActivityRecord：</strong>一一对应着Activity，随着Activity的生命周期变化而变化。在<code>TaskRecord</code>栈顶时Activity用户可见</p>
-<p><strong>TaskRecord：</strong>任务栈</p>
-<p><strong>ActivityStack：</strong>用于管理<code>TaskRecord</code></p>
-<p><strong>ActivityStackSupervisor：</strong>管理多个<code>ActivityStack</code>，将<code>ActivityStack</code>分为两种：<code>mHomeStack</code>和<code>mFocusedStack</code>。同一时间只有一个（<code>mFocusedStack</code>）会获得焦点</p>
-<h1 id="PackageManagerService-PKMS"><a href="#PackageManagerService-PKMS" class="headerlink" title="PackageManagerService(PKMS)"></a>PackageManagerService(PKMS)</h1><ul>
-<li>[Android 10.0 PackageManagerService（一）工作原理及启动流程-<a target="_blank" rel="noopener" href="https://blog.csdn.net/yiranfeng/article/details/103941371">Android取经之路]_android permissionmanagerservice-CSDN博客</a></li>
-</ul>
-<h1 id="PowerManagerService-PMS"><a href="#PowerManagerService-PMS" class="headerlink" title="PowerManagerService(PMS)"></a>PowerManagerService(PMS)</h1><ul>
-<li>[<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_40731414/article/details/131978302">Android 13]PowerManagerService系列1–启动流程和核心方法-CSDN博客</a></li>
-</ul>
-<h1 id="WindowManagerService-WMS"><a href="#WindowManagerService-WMS" class="headerlink" title="WindowManagerService(WMS)"></a>WindowManagerService(WMS)</h1><ul>
-<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/Rain_9155/article/details/88829992">Window, WindowManager和WindowManagerService之间的关系_java windowmanager windowmanagerservice怎么表示关系-CSDN博客</a></li>
-</ul>
-<p>参考文章</p>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/616811057">Android Framework底层原理——WMS机制 - 知乎</a></li>
-</ul>
+<h4 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h4><ol>
+<li>Handler内存泄露</li>
+<li>非静态内部类 &amp; 匿名内部类 会持有外部类的引用，因此想要回收外部类的资源需要先回收内部类</li>
+<li>webview创建在独立进程，合适时机销毁进程来释放内存</li>
+<li>资源文件如文件、图片等在<code>退出Activity之前</code>关闭资源对象</li>
+<li>广播有注册无反注册</li>
+<li>对象存放到集合里，集合持有了对象引用，导致对象无法被回收</li>
+<li>bitmap对象没有调用recycle()对象释放内存</li>
+</ol>
+<h3 id="内存溢出-over-of-memory"><a href="#内存溢出-over-of-memory" class="headerlink" title="内存溢出[over of memory]"></a>内存溢出[over of memory]</h3><blockquote>
+<p>内存使用量超出了虚拟机分配的最大值</p>
+</blockquote>
+<h3 id="内存抖动"><a href="#内存抖动" class="headerlink" title="内存抖动"></a>内存抖动</h3><h4 id="原理-1"><a href="#原理-1" class="headerlink" title="原理"></a>原理</h4><blockquote>
+<p>参考先来先服务的抖动现象<br>频繁分配和回收内存，锯齿状内存变化</p>
+</blockquote>
+<h4 id="场景-1"><a href="#场景-1" class="headerlink" title="场景"></a>场景</h4><ol>
+<li>循环创建大内存对象</li>
+<li>自定义view的onDraw方法因为创建被频繁调用</li>
+</ol>
+<h2 id="引用问题"><a href="#引用问题" class="headerlink" title="引用问题"></a>引用问题</h2><blockquote>
+<p>Java四大引用问题</p>
+</blockquote>
+<h3 id="强引用"><a href="#强引用" class="headerlink" title="强引用"></a>强引用</h3><blockquote>
+<p>只要对象存在强引用，就不会被回收</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">UKFC</span> <span class="variable">ukfc</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">UKFC</span>();</span><br></pre></td></tr></table></figure>
+<h3 id="软引用"><a href="#软引用" class="headerlink" title="软引用"></a>软引用</h3><blockquote>
+<p>SoftReference关键字，在内存空间不够时候会被GC回收</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">str</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">String</span>(<span class="string">&quot;UKFC&quot;</span>);</span><br><span class="line">SoftReference&lt;String&gt; soft = <span class="keyword">new</span> <span class="title class_">SoftReference</span>&lt;String&gt;(str);</span><br></pre></td></tr></table></figure>
+<h3 id="弱引用"><a href="#弱引用" class="headerlink" title="弱引用"></a>弱引用</h3><blockquote>
+<p>WeakReference关键字，只要发生GC就会被回收</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">UKFC</span> <span class="variable">ukfc</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">UKFC</span>();</span><br><span class="line">WeakReference&lt;UKFC&gt; wr = <span class="keyword">new</span> <span class="title class_">WeakReference</span>&lt;UKFC&gt;(ukfc);</span><br></pre></td></tr></table></figure>
+<h3 id="虚引用"><a href="#虚引用" class="headerlink" title="虚引用"></a>虚引用</h3><blockquote>
+<p>形同虚设，任何时候都有可能被GC回收</p>
+</blockquote>
+<p>参考文章：<a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000042313862">https://segmentfault.com/a/1190000042313862</a></p>
 
     </div>
 
@@ -236,7 +253,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/Android-Design/" rel="tag"># Android Design</a>
+              <a href="/tags/Android/" rel="tag"># Android</a>
           </div>
 
         
@@ -245,13 +262,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/design/" rel="prev" title="设计模式">
-      <i class="fa fa-chevron-left"></i> 设计模式
+    <a href="/AndroidFramework/" rel="prev" title="Android FrameWork">
+      <i class="fa fa-chevron-left"></i> Android FrameWork
     </a></div>
-      <div class="post-nav-item">
-    <a href="/AndroidMemory/" rel="next" title="Android内存相关">
-      Android内存相关 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -310,7 +324,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ActivityManagerService%EF%BC%88AMS%EF%BC%89"><span class="nav-number">1.</span> <span class="nav-text">ActivityManagerService（AMS）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%84%E6%88%90"><span class="nav-number">1.1.</span> <span class="nav-text">组成</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93"><span class="nav-number">1.2.</span> <span class="nav-text">结构体</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#PackageManagerService-PKMS"><span class="nav-number">2.</span> <span class="nav-text">PackageManagerService(PKMS)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#PowerManagerService-PMS"><span class="nav-number">3.</span> <span class="nav-text">PowerManagerService(PMS)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#WindowManagerService-WMS"><span class="nav-number">4.</span> <span class="nav-text">WindowManagerService(WMS)</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%86%85%E5%AD%98%E4%BC%98%E5%8C%96"><span class="nav-number">1.</span> <span class="nav-text">内存优化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98"><span class="nav-number">1.1.</span> <span class="nav-text">常见问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%85%E5%AD%98%E6%B3%84%E9%9C%B2"><span class="nav-number">1.1.1.</span> <span class="nav-text">内存泄露</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8E%9F%E7%90%86"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9C%BA%E6%99%AF"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">场景</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%85%E5%AD%98%E6%BA%A2%E5%87%BA-over-of-memory"><span class="nav-number">1.1.2.</span> <span class="nav-text">内存溢出[over of memory]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%85%E5%AD%98%E6%8A%96%E5%8A%A8"><span class="nav-number">1.1.3.</span> <span class="nav-text">内存抖动</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8E%9F%E7%90%86-1"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9C%BA%E6%99%AF-1"><span class="nav-number">1.1.3.2.</span> <span class="nav-text">场景</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%95%E7%94%A8%E9%97%AE%E9%A2%98"><span class="nav-number">1.2.</span> <span class="nav-text">引用问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%BA%E5%BC%95%E7%94%A8"><span class="nav-number">1.2.1.</span> <span class="nav-text">强引用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E5%BC%95%E7%94%A8"><span class="nav-number">1.2.2.</span> <span class="nav-text">软引用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%B1%E5%BC%95%E7%94%A8"><span class="nav-number">1.2.3.</span> <span class="nav-text">弱引用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%99%9A%E5%BC%95%E7%94%A8"><span class="nav-number">1.2.4.</span> <span class="nav-text">虚引用</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
