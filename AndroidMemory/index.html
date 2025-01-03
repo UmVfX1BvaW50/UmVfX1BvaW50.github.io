@@ -22,15 +22,15 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="Android内存相关">
+  <meta name="description" content="内存优化  性能监控  ANR问题">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Android内存相关">
+<meta property="og:title" content="Android性能相关">
 <meta property="og:url" content="http://example.com/AndroidMemory/index.html">
 <meta property="og:site_name" content="UmVfX1BvaW50&#39;s Blog">
-<meta property="og:description" content="Android内存相关">
+<meta property="og:description" content="内存优化  性能监控  ANR问题">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-01-03T02:45:15.315Z">
-<meta property="article:modified_time" content="2025-01-03T06:24:11.553Z">
+<meta property="article:modified_time" content="2025-01-03T10:19:36.873Z">
 <meta property="article:author" content="UmVfX1BvaW50">
 <meta property="article:tag" content="Android">
 <meta name="twitter:card" content="summary">
@@ -48,7 +48,7 @@
   };
 </script>
 
-  <title>Android内存相关 | UmVfX1BvaW50's Blog</title>
+  <title>Android性能相关 | UmVfX1BvaW50's Blog</title>
   
 
 
@@ -171,7 +171,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Android内存相关
+          Android性能相关
         </h1>
 
         <div class="post-meta">
@@ -197,7 +197,11 @@
 
       
         <ul>
-<li><p>Android内存相关</p>
+<li><p>内存优化</p>
+</li>
+<li><p>性能监控</p>
+</li>
+<li><p>ANR问题</p>
 <span id="more"></span></li>
 </ul>
 <HR color="red"></HR>
@@ -255,7 +259,49 @@
 <h3 id="读取-proc-stat文件"><a href="#读取-proc-stat文件" class="headerlink" title="读取&#x2F;proc&#x2F;stat文件"></a>读取&#x2F;proc&#x2F;stat文件</h3><blockquote>
 <p>前面三种方式都有的缺陷就是无法监控单个核的情况，因此这是现在最合理的方案</p>
 </blockquote>
-<p>参考文章：<a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000042313862">https://segmentfault.com/a/1190000042313862</a></p>
+<h1 id="Application-not-responsing-ANR"><a href="#Application-not-responsing-ANR" class="headerlink" title="Application not responsing[ANR]"></a>Application not responsing[ANR]</h1><ul>
+<li>应用无响应</li>
+</ul>
+<h2 id="成因"><a href="#成因" class="headerlink" title="成因"></a>成因</h2><p><strong>超时</strong></p>
+<blockquote>
+<p>Android监控程序的响应，超时time</p>
+</blockquote>
+<ul>
+<li>Activity无响应超过5s</li>
+<li>BroadcastReceiver <code>前台10s内（后台60s内）</code>未完成设定操作</li>
+<li>Service <code>前台20s内（后台200s内）</code>未完成设定操作</li>
+</ul>
+<p><strong>死锁</strong></p>
+<p><strong>IO阻塞</strong></p>
+<p><strong>主线程操作耗时、错误操作</strong></p>
+<h2 id="处理"><a href="#处理" class="headerlink" title="处理"></a>处理</h2><blockquote>
+<p>因为成因基本就是资源占用率太高、操作太耗时，亦或是逻辑问题导致崩溃，所以排除掉逻辑问题以后主要就是看怎么优化耗时耗资源问题了</p>
+</blockquote>
+<ul>
+<li>将耗时操作放在子线程</li>
+<li>让用户感知耗时操作进度</li>
+</ul>
+<h2 id="Tool"><a href="#Tool" class="headerlink" title="Tool"></a>Tool</h2><ul>
+<li><p>CPU Profiler</p>
+</li>
+<li><p>data&#x2F;anr&#x2F;traces.txt &lt;– FileObserver | ANR-WatchDog[root]</p>
+</li>
+<li><p>systrace</p>
+</li>
+<li><p>Perfetto</p>
+</li>
+<li><p>SIGQUIT</p>
+</li>
+<li><p>PerfDog</p>
+</li>
+</ul>
+<p>参考文章：</p>
+<ul>
+<li><p><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000042313862">https://segmentfault.com/a/1190000042313862</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904062610046990">深入探索Android卡顿优化（上）成为一名优秀的Android开发，需要一份完备的知识体系，在这里，让我们一起成长为自 - 掘金</a></p>
+</li>
+</ul>
 
     </div>
 
@@ -339,7 +385,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%86%85%E5%AD%98%E4%BC%98%E5%8C%96"><span class="nav-number">1.</span> <span class="nav-text">内存优化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98"><span class="nav-number">1.1.</span> <span class="nav-text">常见问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%85%E5%AD%98%E6%B3%84%E9%9C%B2"><span class="nav-number">1.1.1.</span> <span class="nav-text">内存泄露</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8E%9F%E7%90%86"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9C%BA%E6%99%AF"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">场景</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%85%E5%AD%98%E6%BA%A2%E5%87%BA-over-of-memory"><span class="nav-number">1.1.2.</span> <span class="nav-text">内存溢出[over of memory]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%85%E5%AD%98%E6%8A%96%E5%8A%A8"><span class="nav-number">1.1.3.</span> <span class="nav-text">内存抖动</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8E%9F%E7%90%86-1"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9C%BA%E6%99%AF-1"><span class="nav-number">1.1.3.2.</span> <span class="nav-text">场景</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%95%E7%94%A8%E9%97%AE%E9%A2%98"><span class="nav-number">1.2.</span> <span class="nav-text">引用问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%BA%E5%BC%95%E7%94%A8"><span class="nav-number">1.2.1.</span> <span class="nav-text">强引用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E5%BC%95%E7%94%A8"><span class="nav-number">1.2.2.</span> <span class="nav-text">软引用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%B1%E5%BC%95%E7%94%A8"><span class="nav-number">1.2.3.</span> <span class="nav-text">弱引用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%99%9A%E5%BC%95%E7%94%A8"><span class="nav-number">1.2.4.</span> <span class="nav-text">虚引用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7"><span class="nav-number">1.3.</span> <span class="nav-text">性能监控</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#top"><span class="nav-number">1.3.1.</span> <span class="nav-text">top</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ps"><span class="nav-number">1.3.2.</span> <span class="nav-text">ps</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dumpsys-cpuinfo"><span class="nav-number">1.3.3.</span> <span class="nav-text">dumpsys cpuinfo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%BB%E5%8F%96-proc-stat%E6%96%87%E4%BB%B6"><span class="nav-number">1.3.4.</span> <span class="nav-text">读取&#x2F;proc&#x2F;stat文件</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%86%85%E5%AD%98%E4%BC%98%E5%8C%96"><span class="nav-number">1.</span> <span class="nav-text">内存优化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98"><span class="nav-number">1.1.</span> <span class="nav-text">常见问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%85%E5%AD%98%E6%B3%84%E9%9C%B2"><span class="nav-number">1.1.1.</span> <span class="nav-text">内存泄露</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8E%9F%E7%90%86"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9C%BA%E6%99%AF"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">场景</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%85%E5%AD%98%E6%BA%A2%E5%87%BA-over-of-memory"><span class="nav-number">1.1.2.</span> <span class="nav-text">内存溢出[over of memory]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%85%E5%AD%98%E6%8A%96%E5%8A%A8"><span class="nav-number">1.1.3.</span> <span class="nav-text">内存抖动</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8E%9F%E7%90%86-1"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9C%BA%E6%99%AF-1"><span class="nav-number">1.1.3.2.</span> <span class="nav-text">场景</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%95%E7%94%A8%E9%97%AE%E9%A2%98"><span class="nav-number">1.2.</span> <span class="nav-text">引用问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%BA%E5%BC%95%E7%94%A8"><span class="nav-number">1.2.1.</span> <span class="nav-text">强引用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E5%BC%95%E7%94%A8"><span class="nav-number">1.2.2.</span> <span class="nav-text">软引用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%B1%E5%BC%95%E7%94%A8"><span class="nav-number">1.2.3.</span> <span class="nav-text">弱引用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%99%9A%E5%BC%95%E7%94%A8"><span class="nav-number">1.2.4.</span> <span class="nav-text">虚引用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7"><span class="nav-number">1.3.</span> <span class="nav-text">性能监控</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#top"><span class="nav-number">1.3.1.</span> <span class="nav-text">top</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ps"><span class="nav-number">1.3.2.</span> <span class="nav-text">ps</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dumpsys-cpuinfo"><span class="nav-number">1.3.3.</span> <span class="nav-text">dumpsys cpuinfo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%BB%E5%8F%96-proc-stat%E6%96%87%E4%BB%B6"><span class="nav-number">1.3.4.</span> <span class="nav-text">读取&#x2F;proc&#x2F;stat文件</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Application-not-responsing-ANR"><span class="nav-number">2.</span> <span class="nav-text">Application not responsing[ANR]</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%88%90%E5%9B%A0"><span class="nav-number">2.1.</span> <span class="nav-text">成因</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%84%E7%90%86"><span class="nav-number">2.2.</span> <span class="nav-text">处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tool"><span class="nav-number">2.3.</span> <span class="nav-text">Tool</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
