@@ -33,7 +33,7 @@
 <meta property="og:image" content="http://example.com/images/dexMod.png">
 <meta property="og:image" content="http://example.com/images/frida.png">
 <meta property="article:published_time" content="2024-12-25T05:58:11.147Z">
-<meta property="article:modified_time" content="2025-01-05T13:22:38.321Z">
+<meta property="article:modified_time" content="2025-01-05T13:28:26.000Z">
 <meta property="article:author" content="UmVfX1BvaW50">
 <meta property="article:tag" content="加固与混淆">
 <meta name="twitter:card" content="summary">
@@ -280,7 +280,10 @@
 <h3 id="VMP"><a href="#VMP" class="headerlink" title="VMP"></a>VMP</h3><blockquote>
 <p>缺心眼儿~</p>
 </blockquote>
-<h2 id="so加固"><a href="#so加固" class="headerlink" title="so加固"></a>so加固</h2><h3 id="基于-init-array-函数加密"><a href="#基于-init-array-函数加密" class="headerlink" title="基于 init_array 函数加密"></a>基于 init_array 函数加密</h3><p><strong>处理：</strong>模拟执行<code>init_array</code>，然后将解密后的字符串全部保存</p>
+<h2 id="so加固"><a href="#so加固" class="headerlink" title="so加固"></a>so加固</h2><h3 id="基于-init-array-函数加密"><a href="#基于-init-array-函数加密" class="headerlink" title="基于 init_array 函数加密"></a>基于 init_array 函数加密</h3><ul>
+<li><a target="_blank" rel="noopener" href="http://ele7enxxh.com/Unpack-Android-Shared-Library-Based-On-Init_Array-Encryption.html">基于init_array加密的SO的脱壳 | Ele7enxxh’s Blog</a></li>
+</ul>
+<p><strong>处理：</strong>模拟执行<code>init_array</code>，然后将解密后的字符串全部保存</p>
 <h3 id="基于-JNI-Onload-函数加密"><a href="#基于-JNI-Onload-函数加密" class="headerlink" title="基于 JNI_Onload 函数加密"></a>基于 JNI_Onload 函数加密</h3><p><strong>处理：</strong><code>hook</code> 或者 <code>unicorn</code> 拿到解密后寄存器的值</p>
 <h3 id="自定义linker加固so"><a href="#自定义linker加固so" class="headerlink" title="自定义linker加固so"></a>自定义linker加固so</h3><h4 id="加密"><a href="#加密" class="headerlink" title="加密"></a>加密</h4><p>既然是自定义，所以格式是自由的，原则就是壳so能够正确识别格式并且解密被加固的so就行</p>
 <h4 id="运行过程"><a href="#运行过程" class="headerlink" title="运行过程"></a>运行过程</h4><blockquote>
