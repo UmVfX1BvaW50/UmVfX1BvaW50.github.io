@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="unidbg">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Unidbg">
+<meta property="og:url" content="http://example.com/unidbg/index.html">
+<meta property="og:site_name" content="UmVfX1BvaW50&#39;s Blog">
+<meta property="og:description" content="unidbg">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/images/traceCode.png">
+<meta property="article:published_time" content="2025-01-04T09:57:40.408Z">
+<meta property="article:modified_time" content="2025-01-05T11:13:21.113Z">
+<meta property="article:author" content="UmVfX1BvaW50">
+<meta property="article:tag" content="Android">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/traceCode.png">
+
+<link rel="canonical" href="http://example.com/unidbg/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Unidbg | UmVfX1BvaW50's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">UmVfX1BvaW50's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/unidbg/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="UmVfX1BvaW50">
+      <meta itemprop="description" content="Team UKFC Mobile | Re">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="UmVfX1BvaW50's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Unidbg
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <ul>
+<li>unidbg<span id="more"></span></li>
+</ul>
+<HR color="red"></HR>
+
+<blockquote>
+<p>突然发现所知甚浅，而且之前不想学的反而都是最需要的，慢慢来吧</p>
+</blockquote>
+<p>项目地址：<a target="_blank" rel="noopener" href="https://github.com/zhkl0228/unidbg">https://github.com/zhkl0228/unidbg</a></p>
+<h1 id="环境初始化"><a href="#环境初始化" class="headerlink" title="环境初始化"></a>环境初始化</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Android模拟器</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> AndroidEmulator emulator;</span><br><span class="line"><span class="comment">//虚拟机</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> VM vm;</span><br><span class="line"><span class="comment">//内存接口</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> Memory memory;</span><br><span class="line"><span class="comment">//加载进内存的Module对象</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> Module <span class="keyword">module</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="title function_">MainActivity</span><span class="params">()</span>&#123;</span><br><span class="line">    emulator = AndroidEmulatorBuilder</span><br><span class="line">    <span class="comment">//32位处理器</span></span><br><span class="line">        .for32Bit()</span><br><span class="line">    <span class="comment">//64位处理器</span></span><br><span class="line">        <span class="comment">//.for64Bit()  </span></span><br><span class="line">    <span class="comment">//设置根路径，相当于Android中的根目录</span></span><br><span class="line">        <span class="comment">//.setRootDir(new File(&quot;target/rootfs/default&quot;))</span></span><br><span class="line">    <span class="comment">//添加后端工厂</span></span><br><span class="line">        <span class="comment">//.addBackendFactory(new DynarmicFactory(true))</span></span><br><span class="line">    <span class="comment">//指定进程名，最好Android包名作为进程名</span></span><br><span class="line">        <span class="comment">//.setProcessName(&quot;com.github.unidbg&quot;)</span></span><br><span class="line">    <span class="comment">//生成实例</span></span><br><span class="line">        .build();</span><br><span class="line"></span><br><span class="line">    memory = emulator.getMemory();</span><br><span class="line">    <span class="comment">//设置Android解析器SDK版本</span></span><br><span class="line">    memory.setLibraryResolver(<span class="keyword">new</span> <span class="title class_">AndroidResolver</span>(<span class="number">23</span>));</span><br><span class="line">    <span class="comment">//创建APK对应的vm</span></span><br><span class="line">    vm = emulator.createDalvikVM(<span class="keyword">new</span> <span class="title class_">File</span>(<span class="string">&quot;unidbg-android/src/test/java/com/dta/lesson2/app-debug.apk&quot;</span>));</span><br><span class="line">    <span class="comment">//加载so、调用init</span></span><br><span class="line">    <span class="type">DalvikModule</span> <span class="variable">dalvikModule</span> <span class="operator">=</span> vm.loadLibrary(<span class="keyword">new</span> <span class="title class_">File</span>(<span class="string">&quot;unidbg-android/src/test/java/com/dta/lesson2/libnative-lib.so&quot;</span>), <span class="literal">true</span>);</span><br><span class="line">    <span class="comment">//将so文件对应的Module存入成员变量</span></span><br><span class="line">    <span class="keyword">module</span> = dalvikModule.getModule();</span><br><span class="line">    <span class="comment">//动态注册初始化【模拟器实例,要执行的JNI_Onload函数模块】</span></span><br><span class="line">    vm.callJNI_OnLoad(emulator,<span class="keyword">module</span>);</span><br><span class="line">    <span class="comment">//设置是否输出JNI运行日志</span></span><br><span class="line">    <span class="comment">//vm.setVerbose(true);</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="符号调用"><a href="#符号调用" class="headerlink" title="符号调用"></a>符号调用</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">callMd5</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="comment">//生成代理对象</span></span><br><span class="line">    <span class="type">DvmObject</span> <span class="variable">obj</span> <span class="operator">=</span> ProxyDvmObject.createObject(vm,<span class="built_in">this</span>);</span><br><span class="line">    <span class="comment">//设置输入参数</span></span><br><span class="line">    <span class="type">String</span> <span class="variable">data</span> <span class="operator">=</span> <span class="string">&quot;dta&quot;</span>;</span><br><span class="line">    <span class="type">DvmObject</span> <span class="variable">dvmObject</span> <span class="operator">=</span> obj.callJniMethodObject(emulator, <span class="string">&quot;md5(Ljava/lang/String;)Ljava/lang/String;&quot;</span>, data);</span><br><span class="line">    <span class="comment">//从Dvm对象获取值</span></span><br><span class="line">    <span class="type">String</span> <span class="variable">result</span> <span class="operator">=</span> (String) dvmObject.getValue();</span><br><span class="line">    System.out.println(<span class="string">&quot;[symble] Call the so md5 function result is ==&gt; &quot;</span>+ result);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="地址调用"><a href="#地址调用" class="headerlink" title="地址调用"></a>地址调用</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">call_address</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="comment">//构造函数参数</span></span><br><span class="line">    <span class="type">Pointer</span> <span class="variable">jniEnv</span> <span class="operator">=</span> vm.getJNIEnv();</span><br><span class="line">    <span class="type">DvmObject</span> <span class="variable">obj</span> <span class="operator">=</span> ProxyDvmObject.createObject(vm,<span class="built_in">this</span>);</span><br><span class="line">    <span class="type">StringObject</span> <span class="variable">data</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringObject</span>(vm,<span class="string">&quot;dta&quot;</span>);</span><br><span class="line">    <span class="comment">//转换为参数列表</span></span><br><span class="line">    List&lt;Object&gt; args = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">    args.add(jniEnv);</span><br><span class="line">    args.add(vm.addLocalObject(obj));</span><br><span class="line">    args.add(vm.addLocalObject(data));</span><br><span class="line">    <span class="comment">//调用so</span></span><br><span class="line">    Number[] numbers = <span class="keyword">new</span> <span class="title class_">Number</span>[]&#123;<span class="keyword">module</span>.callFunction(emulator, <span class="number">0x8E81</span>, args.toArray())&#125;;</span><br><span class="line">    <span class="comment">//getvalue</span></span><br><span class="line">    DvmObject&lt;?&gt; object = vm.getObject(numbers[<span class="number">0</span>].intValue());</span><br><span class="line">    <span class="type">String</span> <span class="variable">value</span> <span class="operator">=</span> (String) object.getValue();</span><br><span class="line">    System.out.println(<span class="string">&quot;[addr] Call the so md5 function result is ==&gt; &quot;</span>+ value);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="Hook"><a href="#Hook" class="headerlink" title="Hook"></a>Hook</h1><blockquote>
+<p>unidbg支持的hook框架：HookZz、Dobby、xHook、whale</p>
+</blockquote>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://blog.seeflower.dev/archives/67/">【转载】Unidbg Hook 大全 - SeeFlowerX</a></li>
+</ul>
+<h2 id="Unicorn-Hook"><a href="#Unicorn-Hook" class="headerlink" title="Unicorn Hook"></a>Unicorn Hook</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">emulator.getBackend().hook_add_new(<span class="keyword">new</span> <span class="title class_">CodeHook</span>() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">hook</span><span class="params">(Backend backend, <span class="type">long</span> address, <span class="type">int</span> size, Object user)</span> &#123;</span><br><span class="line">        <span class="type">RegisterContext</span> <span class="variable">context</span> <span class="operator">=</span> emulator.getContext();</span><br><span class="line">        <span class="comment">//System.out.println(user);</span></span><br><span class="line">        <span class="comment">//System.out.println(size);</span></span><br><span class="line">        <span class="keyword">if</span> (address == <span class="keyword">module</span>.base + <span class="number">0x1FF4</span>)&#123;</span><br><span class="line">            <span class="type">Pointer</span> <span class="variable">md5Ctx</span> <span class="operator">=</span> context.getPointerArg(<span class="number">0</span>);</span><br><span class="line">            Inspector.inspect(md5Ctx.getByteArray(<span class="number">0</span>, <span class="number">32</span>), <span class="string">&quot;md5Ctx&quot;</span>);</span><br><span class="line">            <span class="type">Pointer</span> <span class="variable">plainText</span> <span class="operator">=</span> context.getPointerArg(<span class="number">1</span>);</span><br><span class="line">            <span class="type">int</span> <span class="variable">length</span> <span class="operator">=</span> context.getIntArg(<span class="number">2</span>);</span><br><span class="line">            Inspector.inspect(plainText.getByteArray(<span class="number">0</span>, length), <span class="string">&quot;plainText&quot;</span>);</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span> (address == <span class="keyword">module</span>.base + <span class="number">0x2004</span>)&#123;</span><br><span class="line">            <span class="type">Pointer</span> <span class="variable">cipherText</span> <span class="operator">=</span> context.getPointerArg(<span class="number">1</span>);</span><br><span class="line">            Inspector.inspect(cipherText.getByteArray(<span class="number">0</span>, <span class="number">16</span>), <span class="string">&quot;cipherText&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onAttach</span><span class="params">(UnHook unHook)</span> &#123;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">detach</span><span class="params">()</span> &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;, <span class="keyword">module</span>.base + <span class="number">0x1FE8</span>, <span class="keyword">module</span>.base + <span class="number">0x2004</span>, <span class="string">&quot;xxxxzzzz&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="HookZz"><a href="#HookZz" class="headerlink" title="HookZz"></a>HookZz</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">hook</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="comment">//获取HookZz实例</span></span><br><span class="line">    <span class="type">HookZz</span> <span class="variable">hook</span> <span class="operator">=</span> HookZz.getInstance(emulator);</span><br><span class="line">    <span class="comment">//replace(首地址[thumb指令集要加一]，ReplaceCallback回调)</span></span><br><span class="line">    hook.replace(<span class="keyword">module</span>.base + <span class="number">0x3DC</span> + <span class="number">1</span>, <span class="keyword">new</span> <span class="title class_">ReplaceCallback</span>() &#123;</span><br><span class="line">        <span class="comment">/*ReplaceCallback回调三个参数：</span></span><br><span class="line"><span class="comment">            * 1. onCall方法在函数执行之前执行【获取和修改函数参数】</span></span><br><span class="line"><span class="comment">            * 2. postCall方法在函数执行结束之后执行【借助后端工厂对寄存器来写入，修改返回值】</span></span><br><span class="line"><span class="comment">            * 3. postCall方法默认不执行，需要配置第三个参数enablePostCall为true</span></span><br><span class="line"><span class="comment">            * */</span></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="comment">/*onCall的两个可重写方法：有无参数context[用于读取寄存器相关内容]</span></span><br><span class="line"><span class="comment">            * </span></span><br><span class="line"><span class="comment">            * */</span></span><br><span class="line">        <span class="keyword">public</span> HookStatus <span class="title function_">onCall</span><span class="params">(Emulator&lt;?&gt; emulator, HookContext context, <span class="type">long</span> originFunction)</span> &#123;</span><br><span class="line">            <span class="comment">//打印参数</span></span><br><span class="line">            System.out.println(String.format(<span class="string">&quot;R2: %d, R3: %d&quot;</span>,context.getIntArg(<span class="number">2</span>),context.getIntArg(<span class="number">3</span>)));</span><br><span class="line">            <span class="comment">//修改输入参数</span></span><br><span class="line">            emulator.getBackend().reg_write(Unicorn.UC_ARM_REG_R3,<span class="number">5</span>);</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">super</span>.onCall(emulator, context, originFunction);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">postCall</span><span class="params">(Emulator&lt;?&gt; emulator, HookContext context)</span> &#123;</span><br><span class="line">            <span class="comment">//后端工厂reg_write(寄存器number，value)</span></span><br><span class="line">            emulator.getBackend().reg_write(Unicorn.UC_ARM_REG_R0,<span class="number">10</span>);</span><br><span class="line">            <span class="built_in">super</span>.postCall(emulator, context);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;, <span class="literal">true</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="patch"><a href="#patch" class="headerlink" title="patch"></a>patch</h1><p>arm –&gt; 机器码</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://armconverter.com/">Online ARM to HEX Converter</a></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//直接写机器码</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">patch</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="type">UnidbgPointer</span> <span class="variable">pointer</span> <span class="operator">=</span> UnidbgPointer.pointer(emulator,<span class="keyword">module</span>.base + <span class="number">0x3E8</span>);</span><br><span class="line">    <span class="type">byte</span>[] code = <span class="keyword">new</span> <span class="title class_">byte</span>[]&#123;(<span class="type">byte</span>) <span class="number">0xd0</span>, <span class="number">0x1a</span>&#125;;</span><br><span class="line">    pointer.write(code);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//keystone转化</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">patch2</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="type">UnidbgPointer</span> <span class="variable">pointer</span> <span class="operator">=</span> UnidbgPointer.pointer(emulator,<span class="keyword">module</span>.base + <span class="number">0x3E8</span>);</span><br><span class="line">    <span class="type">Keystone</span> <span class="variable">keystone</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Keystone</span>(KeystoneArchitecture.Arm, KeystoneMode.ArmThumb);</span><br><span class="line">    <span class="type">String</span> <span class="variable">s</span> <span class="operator">=</span> <span class="string">&quot;subs r0, r2, r3&quot;</span>;</span><br><span class="line">    <span class="type">byte</span>[] machineCode = keystone.assemble(s).getMachineCode();</span><br><span class="line">    <span class="comment">//byte[] code = ;</span></span><br><span class="line">    pointer.write(machineCode);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="打印调用栈"><a href="#打印调用栈" class="headerlink" title="打印调用栈"></a>打印调用栈</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">emulator.getUnwinder().unwind();</span><br></pre></td></tr></table></figure>
+
+<h1 id="BreakPoint"><a href="#BreakPoint" class="headerlink" title="BreakPoint"></a>BreakPoint</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">emulator.attach().addBreakPoint(<span class="keyword">module</span>.base + <span class="number">0xB1A</span>, <span class="keyword">new</span> <span class="title class_">BreakPointCallback</span>() &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">onHit</span><span class="params">(Emulator&lt;?&gt; emulator, <span class="type">long</span> address)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h1 id="监控内存"><a href="#监控内存" class="headerlink" title="监控内存"></a>监控内存</h1><p><strong>文件输出流</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">traceFile</span> <span class="operator">=</span> <span class="string">&quot;myMonitorFile&quot;</span>;</span><br><span class="line"><span class="type">PrintStream</span> <span class="variable">traceStream</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    traceStream = <span class="keyword">new</span> <span class="title class_">PrintStream</span>(<span class="keyword">new</span> <span class="title class_">FileOutputStream</span>(traceFile), <span class="literal">true</span>);</span><br><span class="line">&#125; <span class="keyword">catch</span> (FileNotFoundException e) &#123;</span><br><span class="line">    e.printStackTrace();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>内存读</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">emulator.traceRead(<span class="keyword">module</span>.base, <span class="keyword">module</span>.base + <span class="keyword">module</span>.size).setRedirect(traceStream);</span><br></pre></td></tr></table></figure>
+
+<p><strong>内存写</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">emulator.traceWrite(<span class="keyword">module</span>.base, <span class="keyword">module</span>.base + <span class="keyword">module</span>.size).setRedirect(traceStream);</span><br></pre></td></tr></table></figure>
+
+<h1 id="TraceCode"><a href="#TraceCode" class="headerlink" title="TraceCode"></a>TraceCode</h1><p><img src="/../images/traceCode.png" alt="traceCode"></p>
+<ul>
+<li>traceCode在分析llvm中非常有用，可以将程序运行后实际用到的汇编代码输出到指定文件中，便于下一步分析</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">traceFile</span> <span class="operator">=</span> <span class="string">&quot;myTraceCodeFile&quot;</span>;</span><br><span class="line"><span class="type">PrintStream</span> <span class="variable">traceStream</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    traceStream = <span class="keyword">new</span> <span class="title class_">PrintStream</span>(<span class="keyword">new</span> <span class="title class_">FileOutputStream</span>(traceFile), <span class="literal">true</span>);</span><br><span class="line">&#125; <span class="keyword">catch</span> (FileNotFoundException e) &#123;</span><br><span class="line">    e.printStackTrace();</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//追踪目标库的汇编代码，并将信息输出定向到指定文件中</span></span><br><span class="line">emulator.traceCode(<span class="keyword">module</span>.base, <span class="keyword">module</span>.base + <span class="keyword">module</span>.size).setRedirect(traceStream);</span><br></pre></td></tr></table></figure>
+
+<h1 id="TraceBlock"><a href="#TraceBlock" class="headerlink" title="TraceBlock"></a>TraceBlock</h1><p><strong>完整案例</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.dta.lesson2;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> capstone.api.Instruction;</span><br><span class="line"><span class="keyword">import</span> com.github.unidbg.AndroidEmulator;</span><br><span class="line"><span class="keyword">import</span> com.github.unidbg.Module;</span><br><span class="line"><span class="keyword">import</span> com.github.unidbg.arm.backend.Backend;</span><br><span class="line"><span class="keyword">import</span> com.github.unidbg.arm.backend.BlockHook;</span><br><span class="line"><span class="keyword">import</span> com.github.unidbg.arm.backend.CodeHook;</span><br><span class="line"><span class="keyword">import</span> com.github.unidbg.arm.backend.UnHook;</span><br><span class="line"><span class="keyword">import</span> com.github.unidbg.linux.android.AndroidEmulatorBuilder;</span><br><span class="line"><span class="keyword">import</span> com.github.unidbg.linux.android.AndroidResolver;</span><br><span class="line"><span class="keyword">import</span> com.github.unidbg.linux.android.dvm.DalvikModule;</span><br><span class="line"><span class="keyword">import</span> com.github.unidbg.linux.android.dvm.DvmObject;</span><br><span class="line"><span class="keyword">import</span> com.github.unidbg.linux.android.dvm.StringObject;</span><br><span class="line"><span class="keyword">import</span> com.github.unidbg.linux.android.dvm.VM;</span><br><span class="line"><span class="keyword">import</span> com.github.unidbg.linux.android.dvm.jni.ProxyDvmObject;</span><br><span class="line"><span class="keyword">import</span> com.github.unidbg.memory.Memory;</span><br><span class="line"><span class="keyword">import</span> com.sun.jna.Pointer;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.File;</span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MainActivity</span> &#123;</span><br><span class="line">    <span class="comment">//Android模拟器</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> AndroidEmulator emulator;</span><br><span class="line">    <span class="comment">//虚拟机</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> VM vm;</span><br><span class="line">    <span class="comment">//内存接口</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Memory memory;</span><br><span class="line">    <span class="comment">//加载进内存的Module对象</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Module <span class="keyword">module</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 保存需要用 Frida Hook 的 Block 的地址</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Map&lt;Integer, Integer&gt; subTraceMap = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">    <span class="comment">// 保存命中的 Block 地址的次数，命中次数太多的就忽略掉</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Map&lt;Integer, Integer&gt; calcMap = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">traceBlock</span><span class="params">(<span class="keyword">final</span> <span class="type">long</span> baseAddr, <span class="keyword">final</span> <span class="type">long</span> startAddr, <span class="keyword">final</span> <span class="type">long</span> endAddr)</span> &#123;</span><br><span class="line">        emulator.getBackend().hook_add_new(<span class="keyword">new</span> <span class="title class_">BlockHook</span>() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">hookBlock</span><span class="params">(Backend backend, <span class="type">long</span> address, <span class="type">int</span> size, Object user)</span> &#123;</span><br><span class="line">                <span class="comment">// 代码块需要大于 20 个字节，块太小影响 Frida 的 Hook</span></span><br><span class="line">                <span class="keyword">if</span> (size &gt; <span class="number">20</span>) &#123;</span><br><span class="line">                    <span class="comment">// 反汇编当前地址的指令</span></span><br><span class="line">                    Instruction[] insns = emulator.disassemble(address, <span class="number">4</span>, <span class="number">0</span>);</span><br><span class="line">                    <span class="type">int</span> <span class="variable">iSize</span> <span class="operator">=</span> insns[<span class="number">0</span>].getSize();</span><br><span class="line">                    <span class="type">int</span> <span class="variable">iUseAddr</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">                    <span class="comment">// 根据模式计算偏移地址</span></span><br><span class="line">                    <span class="keyword">if</span> (iSize == <span class="number">4</span>) &#123;</span><br><span class="line">                        <span class="comment">// ARM 模式 4 字节</span></span><br><span class="line">                        iUseAddr = (<span class="type">int</span>) (address - baseAddr);</span><br><span class="line">                    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                        <span class="comment">// THUMB 模式 2 字节，hook 的时候需要 +1</span></span><br><span class="line">                        iUseAddr = (<span class="type">int</span>) (address - baseAddr) + <span class="number">1</span>;</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                    <span class="comment">// 检查命中次数</span></span><br><span class="line">                    <span class="keyword">if</span> (calcMap.containsKey(iUseAddr)) &#123;</span><br><span class="line">                        <span class="comment">// 保存命中次数</span></span><br><span class="line">                        <span class="type">int</span> <span class="variable">iValue</span> <span class="operator">=</span> calcMap.get(iUseAddr);</span><br><span class="line">                        calcMap.put(iUseAddr, iValue + <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">                        <span class="comment">// 4 次以上的调用就不显示，也不用 Frida Trace 了</span></span><br><span class="line">                        <span class="keyword">if</span> (iValue &gt; <span class="number">3</span>) &#123;</span><br><span class="line">                            subTraceMap.remove(iUseAddr);</span><br><span class="line">                        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                            System.out.println(<span class="string">&quot;sub_&quot;</span> + Integer.toHexString(iUseAddr));</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                        <span class="comment">// 第一次命中，初始化次数</span></span><br><span class="line">                        calcMap.put(iUseAddr, <span class="number">1</span>);</span><br><span class="line">                        subTraceMap.put(iUseAddr, <span class="number">1</span>);</span><br><span class="line">                        System.out.println(<span class="string">&quot;sub_&quot;</span> + Integer.toHexString(iUseAddr));</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onAttach</span><span class="params">(UnHook unHook)</span> &#123;</span><br><span class="line">                <span class="comment">// 可选：附加时的回调</span></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">detach</span><span class="params">()</span> &#123;</span><br><span class="line">                <span class="comment">// 可选：分离时的回调</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;, startAddr, endAddr, <span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">MainActivity</span><span class="params">()</span>&#123;</span><br><span class="line">        emulator = AndroidEmulatorBuilder</span><br><span class="line">                .for32Bit()</span><br><span class="line">                <span class="comment">//.setRootDir(new File(&quot;target/rootfs/default&quot;))</span></span><br><span class="line">                <span class="comment">//.addBackendFactory(new DynarmicFactory(true))</span></span><br><span class="line">                .build();</span><br><span class="line"></span><br><span class="line">        memory = emulator.getMemory();</span><br><span class="line">        <span class="comment">//设置Android解析器SDK版本</span></span><br><span class="line">        memory.setLibraryResolver(<span class="keyword">new</span> <span class="title class_">AndroidResolver</span>(<span class="number">23</span>));</span><br><span class="line">        <span class="comment">//创建APK对应的vm</span></span><br><span class="line">        vm = emulator.createDalvikVM(<span class="keyword">new</span> <span class="title class_">File</span>(<span class="string">&quot;unidbg-android/src/test/java/com/dta/lesson2/app-debug.apk&quot;</span>));</span><br><span class="line">        <span class="comment">//加载so、调用init</span></span><br><span class="line">        <span class="type">DalvikModule</span> <span class="variable">dalvikModule</span> <span class="operator">=</span> vm.loadLibrary(<span class="keyword">new</span> <span class="title class_">File</span>(<span class="string">&quot;unidbg-android/src/test/java/com/dta/lesson2/libnative-lib.so&quot;</span>), <span class="literal">true</span>);</span><br><span class="line">        <span class="comment">//将so文件对应的Module存入成员变量</span></span><br><span class="line">        <span class="keyword">module</span> = dalvikModule.getModule();</span><br><span class="line">        <span class="comment">//动态注册初始化</span></span><br><span class="line">        vm.callJNI_OnLoad(emulator,<span class="keyword">module</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 4. 确定基地址和需要 Trace 的范围</span></span><br><span class="line">        <span class="type">long</span> <span class="variable">baseAddr</span> <span class="operator">=</span> <span class="keyword">module</span>.base;                     <span class="comment">// so 文件的基地址</span></span><br><span class="line">        <span class="type">long</span> <span class="variable">startAddr</span> <span class="operator">=</span> baseAddr + <span class="number">0x8E70</span>;              <span class="comment">// Trace 开始地址</span></span><br><span class="line">        <span class="type">long</span> <span class="variable">endAddr</span> <span class="operator">=</span> baseAddr + <span class="number">0x8E90</span>;                <span class="comment">// Trace 结束地址</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 5. 调用 traceBlock 方法进行跟踪</span></span><br><span class="line">        <span class="built_in">this</span>.traceBlock(baseAddr, startAddr, endAddr);</span><br><span class="line"></span><br><span class="line">        <span class="built_in">this</span>.callMd5();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 7. 输出保存的 Trace 结果</span></span><br><span class="line">        System.out.println(<span class="string">&quot;Sub Trace Map: &quot;</span> + subTraceMap);</span><br><span class="line">        System.out.println(<span class="string">&quot;Calc Map: &quot;</span> + calcMap);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//符号调用</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">callMd5</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="comment">//生成代理对象</span></span><br><span class="line">        <span class="type">DvmObject</span> <span class="variable">obj</span> <span class="operator">=</span> ProxyDvmObject.createObject(vm,<span class="built_in">this</span>);</span><br><span class="line">        <span class="comment">//设置输入参数</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">data</span> <span class="operator">=</span> <span class="string">&quot;dta&quot;</span>;</span><br><span class="line">        <span class="type">DvmObject</span> <span class="variable">dvmObject</span> <span class="operator">=</span> obj.callJniMethodObject(emulator, <span class="string">&quot;md5(Ljava/lang/String;)Ljava/lang/String;&quot;</span>, data);</span><br><span class="line">        <span class="comment">//从Dvm对象获取值</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">result</span> <span class="operator">=</span> (String) dvmObject.getValue();</span><br><span class="line">        System.out.println(<span class="string">&quot;[symble] Call the so md5 function result is ==&gt; &quot;</span>+ result);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">long</span> <span class="variable">start</span> <span class="operator">=</span> System.currentTimeMillis();</span><br><span class="line">        <span class="type">MainActivity</span> <span class="variable">mainActivity</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">MainActivity</span>();</span><br><span class="line">        System.out.println(<span class="string">&quot;load the vm &quot;</span>+( System.currentTimeMillis() - start )+ <span class="string">&quot;ms&quot;</span>);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>输出</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sub_8e81</span><br><span class="line">[symble] Call the so md5 function result is ==&gt; 36072180305f072a2e2c7ea96eedf034</span><br><span class="line">Sub Trace Map: &#123;36481=1&#125;</span><br><span class="line">Calc Map: &#123;36481=1&#125;</span><br><span class="line">load the vm 5769ms</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="cmake编译so"><a href="#cmake编译so" class="headerlink" title="cmake编译so"></a>cmake编译so</h1><h2 id="build-sh"><a href="#build-sh" class="headerlink" title="build.sh"></a>build.sh</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">cmake \</span><br><span class="line"><span class="comment"># 配置ninja的目录</span></span><br><span class="line">-H./ \</span><br><span class="line"><span class="comment"># 配置生成的架构</span></span><br><span class="line">-B./ninja \</span><br><span class="line"><span class="comment"># arm64-v8a</span></span><br><span class="line">-DANDROID_ABI=armeabi-v7a \</span><br><span class="line"><span class="comment"># 配置安卓平台版本 android-16</span></span><br><span class="line">-DANDROID_PLATFORM=android-<span class="number">23</span> \</span><br><span class="line"><span class="comment"># 配置NDK目录</span></span><br><span class="line">-DANDROID_NDK=/root/Android/Sdk/ndk/<span class="number">22.1</span><span class="number">.7171670</span> \</span><br><span class="line"><span class="comment"># 配置工具链android.toolchain.cmake文件的位置【NDK】</span></span><br><span class="line">-DCMAKE_TOOLCHAIN_FILE=/root/Android/Sdk/ndk/<span class="number">22.1</span><span class="number">.7171670</span>/build/cmake/android.toolchain.cmake \</span><br><span class="line">-G Ninja</span><br><span class="line"><span class="comment"># 使用ninja编译so</span></span><br><span class="line">ninja -C./ninja</span><br></pre></td></tr></table></figure>
+
+<h2 id="CMakeLists-txt"><a href="#CMakeLists-txt" class="headerlink" title="CMakeLists.txt"></a>CMakeLists.txt</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">cmake_minimum_required(VERSION <span class="number">3.10</span><span class="number">.2</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Declares and names the project.</span></span><br><span class="line"></span><br><span class="line">project(<span class="string">&quot;lesson5&quot;</span>)</span><br><span class="line"><span class="comment"># 配置生成so的目录位置</span></span><br><span class="line"><span class="built_in">set</span>(CMAKE_LIBRARY_OUTPUT_DIRECTORY $&#123;PROJECT_SOURCE_DIR&#125;/../)</span><br><span class="line"><span class="comment"># 配置构建类型</span></span><br><span class="line"><span class="built_in">set</span>(CMAKE_BUILD_TYPE <span class="string">&quot;Release&quot;</span>)</span><br><span class="line"><span class="comment"># 指定C和C++不输出调试信息</span></span><br><span class="line"><span class="built_in">set</span>(CMAKE_C_FLAGS_RELEASE <span class="string">&quot;$&#123;CMAKE_C_FLAGS_RELEASE&#125; -s&quot;</span>)</span><br><span class="line"><span class="built_in">set</span>(CMAKE_CXX_FLAGS_RELEASE <span class="string">&quot;$&#123;CMAKE_CXX_FLAGS_RELEASE&#125; -s&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Creates and names a library, sets it as either STATIC</span></span><br><span class="line"><span class="comment"># or SHARED, and provides the relative paths to its source code.</span></span><br><span class="line"><span class="comment"># You can define multiple libraries, and CMake builds them for you.</span></span><br><span class="line"><span class="comment"># Gradle automatically packages shared libraries with your APK.</span></span><br><span class="line"></span><br><span class="line">add_library( <span class="comment"># Sets the name of the library.</span></span><br><span class="line">             native-lib</span><br><span class="line"></span><br><span class="line">             <span class="comment"># Sets the library as a shared library.</span></span><br><span class="line">             SHARED</span><br><span class="line"></span><br><span class="line">             <span class="comment"># Provides a relative path to your source file(s).</span></span><br><span class="line">             native-lib.cpp )</span><br><span class="line"></span><br><span class="line"><span class="comment"># Searches for a specified prebuilt library and stores the path as a</span></span><br><span class="line"><span class="comment"># variable. Because CMake includes system libraries in the search path by</span></span><br><span class="line"><span class="comment"># default, you only need to specify the name of the public NDK library</span></span><br><span class="line"><span class="comment"># you want to add. CMake verifies that the library exists before</span></span><br><span class="line"><span class="comment"># completing its build.</span></span><br><span class="line"></span><br><span class="line">find_library( <span class="comment"># Sets the name of the path variable.</span></span><br><span class="line">              log-lib</span><br><span class="line"></span><br><span class="line">              <span class="comment"># Specifies the name of the NDK library that</span></span><br><span class="line">              <span class="comment"># you want CMake to locate.</span></span><br><span class="line">              log )</span><br><span class="line"></span><br><span class="line"><span class="comment"># Specifies libraries CMake should link to your target library. You</span></span><br><span class="line"><span class="comment"># can link multiple libraries, such as libraries you define in this</span></span><br><span class="line"><span class="comment"># build script, prebuilt third-party libraries, or system libraries.</span></span><br><span class="line"></span><br><span class="line">target_link_libraries( <span class="comment"># Specifies the target library.</span></span><br><span class="line">                       native-lib</span><br><span class="line"></span><br><span class="line">                       <span class="comment"># Links the target library to the log library</span></span><br><span class="line">                       <span class="comment"># included in the NDK.</span></span><br><span class="line">                       $&#123;log-lib&#125; )</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+<p>参考致谢：</p>
+<ul>
+<li><p>r0ysue 《unidbg逆向工程原理与实践》</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/r0ysue/UnidbgBook">r0ysue&#x2F;UnidbgBook: 《unidbg逆向工程原理与实践》配套课件</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://gal2xy.github.io/">gla2xy’s blog</a></p>
+</li>
+<li><p>[<a target="_blank" rel="noopener" href="https://bbs.kanxue.com/thread-281703.htm#msg_header_h2_7">原创]unidbg入门笔记-Android安全-看雪-安全社区|安全招聘|kanxue.com</a></p>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Android/" rel="tag"># Android</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/Fuzz/" rel="prev" title="模糊测试">
+      <i class="fa fa-chevron-left"></i> 模糊测试
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="nav-number">1.</span> <span class="nav-text">环境初始化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%A6%E5%8F%B7%E8%B0%83%E7%94%A8"><span class="nav-number">2.</span> <span class="nav-text">符号调用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9C%B0%E5%9D%80%E8%B0%83%E7%94%A8"><span class="nav-number">3.</span> <span class="nav-text">地址调用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Hook"><span class="nav-number">4.</span> <span class="nav-text">Hook</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Unicorn-Hook"><span class="nav-number">4.1.</span> <span class="nav-text">Unicorn Hook</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HookZz"><span class="nav-number">4.2.</span> <span class="nav-text">HookZz</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#patch"><span class="nav-number">5.</span> <span class="nav-text">patch</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%93%E5%8D%B0%E8%B0%83%E7%94%A8%E6%A0%88"><span class="nav-number">5.1.</span> <span class="nav-text">打印调用栈</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#BreakPoint"><span class="nav-number">6.</span> <span class="nav-text">BreakPoint</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%9B%91%E6%8E%A7%E5%86%85%E5%AD%98"><span class="nav-number">7.</span> <span class="nav-text">监控内存</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TraceCode"><span class="nav-number">8.</span> <span class="nav-text">TraceCode</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TraceBlock"><span class="nav-number">9.</span> <span class="nav-text">TraceBlock</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#cmake%E7%BC%96%E8%AF%91so"><span class="nav-number">10.</span> <span class="nav-text">cmake编译so</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#build-sh"><span class="nav-number">10.1.</span> <span class="nav-text">build.sh</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CMakeLists-txt"><span class="nav-number">10.2.</span> <span class="nav-text">CMakeLists.txt</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">UmVfX1BvaW50</p>
+  <div class="site-description" itemprop="description">Team UKFC Mobile | Re</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">17</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">UmVfX1BvaW50</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
