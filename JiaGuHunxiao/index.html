@@ -33,7 +33,7 @@
 <meta property="og:image" content="http://example.com/images/dexMod.png">
 <meta property="og:image" content="http://example.com/images/frida.png">
 <meta property="article:published_time" content="2024-12-25T05:58:11.147Z">
-<meta property="article:modified_time" content="2025-01-06T08:46:53.219Z">
+<meta property="article:modified_time" content="2025-01-12T10:46:26.121Z">
 <meta property="article:author" content="UmVfX1BvaW50">
 <meta property="article:tag" content="加固与混淆">
 <meta name="twitter:card" content="summary">
@@ -436,7 +436,16 @@
 <h2 id="unidbg对抗"><a href="#unidbg对抗" class="headerlink" title="unidbg对抗"></a>unidbg对抗</h2><h3 id="进程名检测"><a href="#进程名检测" class="headerlink" title="进程名检测"></a>进程名检测</h3><blockquote>
 <p>如果模拟执行时候没设置进程名的话会出现unidbg字符串，so里可以做检测</p>
 </blockquote>
-<h1 id="重打包对齐处理"><a href="#重打包对齐处理" class="headerlink" title="重打包对齐处理"></a>重打包对齐处理</h1><p><strong>原因</strong></p>
+<h1 id="重打包对齐处理"><a href="#重打包对齐处理" class="headerlink" title="重打包对齐处理"></a>重打包对齐处理</h1><p><strong>all</strong></p>
+<blockquote>
+<p>生成签名</p>
+<p>keytool -genkeypair -v -keystore my-release-key.jks -keyalg RSA -keysize 2048 -validity 10000 -alias my-key-alias</p>
+<p>签名</p>
+<p>jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA-1 -keystore my-release-key.jks my-app.apk my-key-alias</p>
+<p>对齐（sdk build-tools）</p>
+<p>zipalign -v 4 my-app.apk my-app-aligned.apk</p>
+</blockquote>
+<p><strong>原因</strong></p>
 <ul>
 <li>ZIP未对齐的 APK 文件可能会导致性能问题或安装失败</li>
 </ul>
