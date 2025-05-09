@@ -22,20 +22,20 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="分块划分">
+  <meta name="description" content="Android中的通信协议总结">
 <meta property="og:type" content="article">
-<meta property="og:title" content="分块划分">
-<meta property="og:url" content="http://example.com/ai-chunk/index.html">
+<meta property="og:title" content="Android中的通信协议总结">
+<meta property="og:url" content="http://example.com/Traffic/index.html">
 <meta property="og:site_name" content="UmVfX1BvaW50&#39;s Blog">
-<meta property="og:description" content="分块划分">
+<meta property="og:description" content="Android中的通信协议总结">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-03-28T04:20:03.182Z">
-<meta property="article:modified_time" content="2025-03-28T04:24:44.837Z">
+<meta property="article:published_time" content="2025-05-08T12:03:37.356Z">
+<meta property="article:modified_time" content="2025-05-09T08:20:46.616Z">
 <meta property="article:author" content="UmVfX1BvaW50">
-<meta property="article:tag" content="AI">
+<meta property="article:tag" content="Traffic">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/ai-chunk/">
+<link rel="canonical" href="http://example.com/Traffic/">
 
 
 <script id="page-configurations">
@@ -48,7 +48,7 @@
   };
 </script>
 
-  <title>分块划分 | UmVfX1BvaW50's Blog</title>
+  <title>Android中的通信协议总结 | UmVfX1BvaW50's Blog</title>
   
 
 
@@ -158,7 +158,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/ai-chunk/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/Traffic/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -171,7 +171,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          分块划分
+          Android中的通信协议总结
         </h1>
 
         <div class="post-meta">
@@ -181,7 +181,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/AI/" itemprop="url" rel="index"><span itemprop="name">AI</span></a>
+                  <a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a>
                 </span>
             </span>
 
@@ -197,67 +197,97 @@
 
       
         <ul>
-<li>分块划分<span id="more"></span></li>
+<li>Android中的通信协议总结<span id="more"></span></li>
 </ul>
 <HR color="red"></HR>
 
 
 
-<h3 id="边际采样分块（Margin-based-Sampling-Chunking）"><a href="#边际采样分块（Margin-based-Sampling-Chunking）" class="headerlink" title="边际采样分块（Margin-based Sampling Chunking）"></a><strong>边际采样分块（Margin-based Sampling Chunking）</strong></h3><p><strong>核心思想</strong>：通过检测文本中的“边际变化”或概率差异来确定分块边界，确保分块的语义连贯性。</p>
-<p><strong>实现方式</strong>：</p>
-<ul>
-<li><strong>概率边界检测</strong>：使用语言模型计算文本中每个位置的“分块边界概率”。当概率超过阈值时，将此处作为分块起点或终点。</li>
-<li><strong>滑动窗口对比</strong>：比较相邻文本片段的特征（如模型输出的概率分布或嵌入相似性），当差异显著时（边际变化超过阈值），分割为独立块。</li>
-<li><strong>动态调整</strong>：根据上下文长度或领域特性自适应调整分块大小，避免固定窗口的局限性。</li>
-</ul>
-<p><strong>优势</strong>：</p>
-<ul>
-<li>灵活性高，适应不同文本结构。</li>
-<li>减少话题混杂，提升检索相关性。</li>
-</ul>
-<p><strong>适用场景</strong>：文本结构复杂、话题切换频繁的场景（如多领域混合文档）</p>
-<h3 id="困惑度分块（Perplexity-based-Chunking）"><a href="#困惑度分块（Perplexity-based-Chunking）" class="headerlink" title="困惑度分块（Perplexity-based Chunking）"></a><strong>困惑度分块（Perplexity-based Chunking）</strong></h3><p><strong>核心思想</strong>：利用语言模型的困惑度（Perplexity，PP）指标，找到语义完整的自然分块边界。</p>
-<p><strong>实现方式</strong>：</p>
-<ul>
-<li><strong>逐句&#x2F;段落评估</strong>：计算文本中每个句子或段落的困惑度，低困惑度表明模型“熟悉”该内容（如语法正确、主题明确）。</li>
-<li><strong>边界检测</strong>：在困惑度突增的位置（如话题转换或结构断裂处）进行分块，确保块内语义一致性。</li>
-<li><strong>预训练模型辅助</strong>：使用BERT、GPT等模型生成困惑度曲线，根据曲线平滑度分割文本。</li>
-</ul>
-<p><strong>优势</strong>：</p>
-<ul>
-<li>依赖语言模型对文本的理解能力，分块更符合语义逻辑。</li>
-<li>减少不完整块（如截断的句子或段落）。</li>
-</ul>
-<p><strong>适用场景</strong>：需要高语义完整性的任务（如问答系统、文档摘要）。</p>
-<h3 id="对比"><a href="#对比" class="headerlink" title="对比"></a>对比</h3><table>
+<h1 id="网络请求库"><a href="#网络请求库" class="headerlink" title="网络请求库"></a>网络请求库</h1><table>
 <thead>
 <tr>
-<th><strong>特性</strong></th>
-<th><strong>边际采样分块</strong></th>
-<th><strong>困惑度分块</strong></th>
+<th>项目规模 &#x2F; 语言</th>
+<th>推荐库</th>
 </tr>
 </thead>
 <tbody><tr>
-<td><strong>核心依据</strong></td>
-<td>概率差异或边际变化</td>
-<td>语言模型的困惑度指标</td>
+<td>Java 项目</td>
+<td>Retrofit + OkHttp</td>
 </tr>
 <tr>
-<td><strong>计算成本</strong></td>
-<td>较低（依赖简单统计或滑动窗口）</td>
-<td>较高（需多次调用模型计算困惑度）</td>
+<td>Kotlin 单平台</td>
+<td>Retrofit 或 Fuel</td>
 </tr>
 <tr>
-<td><strong>灵活性</strong></td>
-<td>高（动态调整分块大小）</td>
-<td>中（依赖模型预训练知识）</td>
+<td>Kotlin 多平台</td>
+<td>Ktor Client</td>
 </tr>
 <tr>
-<td><strong>适用场景</strong></td>
-<td>多领域、结构复杂文本</td>
-<td>语义连贯性要求高的任务</td>
+<td>小型项目 &#x2F; 老项目</td>
+<td>Volley</td>
 </tr>
 </tbody></table>
+<h1 id="网络协议"><a href="#网络协议" class="headerlink" title="网络协议"></a>网络协议</h1><table>
+<thead>
+<tr>
+<th>应用场景</th>
+<th>推荐协议</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>普通数据请求</td>
+<td>HTTPS</td>
+</tr>
+<tr>
+<td>实时通信（IM&#x2F;推送）</td>
+<td>WebSocket</td>
+</tr>
+<tr>
+<td>远程调用（高性能）</td>
+<td>gRPC</td>
+</tr>
+<tr>
+<td>文件传输</td>
+<td>FTP &#x2F; HTTPS</td>
+</tr>
+<tr>
+<td>IoT设备</td>
+<td>MQTT</td>
+</tr>
+</tbody></table>
+<h2 id="Quic-Quick-UDP-Internet-Connections"><a href="#Quic-Quick-UDP-Internet-Connections" class="headerlink" title="Quic(Quick UDP Internet Connections)"></a>Quic(Quick UDP Internet Connections)</h2><ul>
+<li><p>由 Google 开发，<strong>基于 UDP</strong> 而不是 TCP</p>
+</li>
+<li><p>用于取代 HTTP&#x2F;2 和 TCP + TLS 的组合</p>
+</li>
+<li><p>已被 IETF 接纳为标准协议（HTTP&#x2F;3 正式使用 QUIC）</p>
+</li>
+</ul>
+<h3 id="核心特点"><a href="#核心特点" class="headerlink" title="核心特点"></a>核心特点</h3><ul>
+<li>✅ <strong>基于 UDP</strong>：避免 TCP 建立连接的三次握手延迟</li>
+<li>✅ <strong>0-RTT 握手</strong>：可实现几乎“瞬时”连接建立</li>
+<li>✅ <strong>集成 TLS 1.3 加密</strong>：加密默认启用，安全性更强</li>
+<li>✅ <strong>多路复用且无队头阻塞（Head-of-Line Blocking）</strong></li>
+<li>✅ <strong>连接迁移支持</strong>：网络切换（如 WiFi → 4G）时连接不中断</li>
+</ul>
+<h3 id="适用场景"><a href="#适用场景" class="headerlink" title="适用场景"></a>适用场景</h3><ul>
+<li>高延迟网络（如移动网络、海外访问）</li>
+<li>实时视频、语音传输</li>
+</ul>
+<h2 id="Spdy"><a href="#Spdy" class="headerlink" title="Spdy"></a>Spdy</h2><ul>
+<li>由 Google 提出，设计目标为加快网页加载速度</li>
+<li>是 HTTP&#x2F;2 的前身和基础</li>
+</ul>
+<h3 id="核心特点-1"><a href="#核心特点-1" class="headerlink" title="核心特点"></a>核心特点</h3><ul>
+<li><strong>多路复用</strong>：一个 TCP 连接上同时发送多个请求。</li>
+<li><strong>头部压缩</strong>：减少 HTTP 请求头冗余信息。</li>
+<li><strong>优先级控制</strong>：重要资源优先加载。</li>
+<li><strong>服务器推送</strong>：服务端可主动向客户端推送资源。</li>
+</ul>
+<h3 id="现状"><a href="#现状" class="headerlink" title="现状"></a>现状</h3><ul>
+<li>SPDY 最终演化为 <strong>HTTP&#x2F;2</strong>，其核心特性已被继承。</li>
+<li>Google Chrome 自 2016 年起移除对 SPDY 的支持。</li>
+</ul>
 
     </div>
 
@@ -267,7 +297,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/AI/" rel="tag"># AI</a>
+              <a href="/tags/Traffic/" rel="tag"># Traffic</a>
           </div>
 
         
@@ -276,13 +306,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/paper1/" rel="prev" title="Efficient Query-Based Attack against ML-Based Android Malware Detection under Zero Knowledge Setting">
-      <i class="fa fa-chevron-left"></i> Efficient Query-Based Attack against ML-Based Android Malware Detection under Zero Knowledge Setting
+    <a href="/apkDownload/" rel="prev" title="APK批量">
+      <i class="fa fa-chevron-left"></i> APK批量
     </a></div>
-      <div class="post-nav-item">
-    <a href="/RAG1/" rel="next" title="RAG综合">
-      RAG综合 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -341,7 +368,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%B9%E9%99%85%E9%87%87%E6%A0%B7%E5%88%86%E5%9D%97%EF%BC%88Margin-based-Sampling-Chunking%EF%BC%89"><span class="nav-number">1.</span> <span class="nav-text">边际采样分块（Margin-based Sampling Chunking）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%B0%E6%83%91%E5%BA%A6%E5%88%86%E5%9D%97%EF%BC%88Perplexity-based-Chunking%EF%BC%89"><span class="nav-number">2.</span> <span class="nav-text">困惑度分块（Perplexity-based Chunking）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E6%AF%94"><span class="nav-number">3.</span> <span class="nav-text">对比</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82%E5%BA%93"><span class="nav-number">1.</span> <span class="nav-text">网络请求库</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE"><span class="nav-number">2.</span> <span class="nav-text">网络协议</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quic-Quick-UDP-Internet-Connections"><span class="nav-number">2.1.</span> <span class="nav-text">Quic(Quick UDP Internet Connections)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%B8%E5%BF%83%E7%89%B9%E7%82%B9"><span class="nav-number">2.1.1.</span> <span class="nav-text">核心特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%82%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="nav-number">2.1.2.</span> <span class="nav-text">适用场景</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spdy"><span class="nav-number">2.2.</span> <span class="nav-text">Spdy</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%B8%E5%BF%83%E7%89%B9%E7%82%B9-1"><span class="nav-number">2.2.1.</span> <span class="nav-text">核心特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%8E%B0%E7%8A%B6"><span class="nav-number">2.2.2.</span> <span class="nav-text">现状</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

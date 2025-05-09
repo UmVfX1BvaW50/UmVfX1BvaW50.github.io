@@ -24,7 +24,7 @@
 
   <meta name="description" content="环境配置">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MAC环境配置">
+<meta property="og:title" content="环境配置">
 <meta property="og:url" content="http://example.com/macConfig/index.html">
 <meta property="og:site_name" content="UmVfX1BvaW50&#39;s Blog">
 <meta property="og:description" content="环境配置">
@@ -38,7 +38,7 @@
 <meta property="og:image" content="http://example.com/images/IDA7.png">
 <meta property="og:image" content="http://example.com/images/IDA8.png">
 <meta property="article:published_time" content="2025-01-19T09:43:48.788Z">
-<meta property="article:modified_time" content="2025-03-09T14:07:17.849Z">
+<meta property="article:modified_time" content="2025-05-06T01:55:10.125Z">
 <meta property="article:author" content="UmVfX1BvaW50">
 <meta property="article:tag" content="Android">
 <meta name="twitter:card" content="summary">
@@ -57,7 +57,7 @@
   };
 </script>
 
-  <title>MAC环境配置 | UmVfX1BvaW50's Blog</title>
+  <title>环境配置 | UmVfX1BvaW50's Blog</title>
   
 
 
@@ -180,7 +180,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          MAC环境配置
+          环境配置
         </h1>
 
         <div class="post-meta">
@@ -211,7 +211,7 @@
 </ul>
 <HR color="red"></HR>
 
-<h1 id="IDA"><a href="#IDA" class="headerlink" title="IDA"></a>IDA</h1><h2 id="开代理安装brew"><a href="#开代理安装brew" class="headerlink" title="开代理安装brew"></a>开代理安装brew</h2><p><a target="_blank" rel="noopener" href="https://brew.sh/">https://brew.sh/</a></p>
+<h1 id="MAC-IDA"><a href="#MAC-IDA" class="headerlink" title="MAC IDA"></a>MAC IDA</h1><h2 id="开代理安装brew"><a href="#开代理安装brew" class="headerlink" title="开代理安装brew"></a>开代理安装brew</h2><p><a target="_blank" rel="noopener" href="https://brew.sh/">https://brew.sh/</a></p>
 <p>&#x2F;bin&#x2F;bash -c “$(curl -fsSL <a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh">https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh</a>)”</p>
 <h2 id="brew安装Wineskin"><a href="#brew安装Wineskin" class="headerlink" title="brew安装Wineskin"></a>brew安装Wineskin</h2><p><a target="_blank" rel="noopener" href="https://github.com/The-Wineskin-Project/WineskinServer">https://github.com/The-Wineskin-Project/WineskinServer</a></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">brew update</span><br><span class="line">brew upgrade</span><br><span class="line">brew uninstall --force --zap wineskin</span><br><span class="line">brew uninstall --force --zap gstreamer-runtime</span><br><span class="line"> </span><br><span class="line">brew install --cask --no-quarantine The-Wineskin-Project/wineskin/wineskin</span><br></pre></td></tr></table></figure>
@@ -243,7 +243,7 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@set path=.\python-3;%path%</span><br><span class="line">@set PYTHONPATH=.\python-3</span><br><span class="line">@start ida64.exe</span><br></pre></td></tr></table></figure>
 
 <p>配置注册表</p>
-<h1 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h1><h2 id="Install"><a href="#Install" class="headerlink" title="Install"></a>Install</h2><blockquote>
+<h1 id="MAC-Docker"><a href="#MAC-Docker" class="headerlink" title="MAC Docker"></a>MAC Docker</h1><h2 id="Install"><a href="#Install" class="headerlink" title="Install"></a>Install</h2><blockquote>
 <p>brew install docker</p>
 </blockquote>
 <blockquote>
@@ -259,7 +259,7 @@
 <blockquote>
 <p>执行docker命令</p>
 </blockquote>
-<h1 id="Docker-angr"><a href="#Docker-angr" class="headerlink" title="Docker angr"></a>Docker angr</h1><blockquote>
+<h2 id="Docker-angr"><a href="#Docker-angr" class="headerlink" title="Docker angr"></a>Docker angr</h2><blockquote>
 <p>docker search angr</p>
 </blockquote>
 <blockquote>
@@ -278,7 +278,7 @@
 <p><strong>use</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># c to ll</span></span><br><span class="line">./clang test.cc -S -emit-llvm -O3 -isysroot $(xcrun --show-sdk-path) -o test.ll</span><br><span class="line"><span class="comment"># ll to bc</span></span><br><span class="line">./llvm-<span class="keyword">as</span> test.ll -o test.bc  </span><br><span class="line"><span class="comment"># bc to s</span></span><br><span class="line">./llc test.bc -o test.s  </span><br><span class="line"><span class="comment"># s to exec</span></span><br><span class="line">./clang++ test.s -o test -stdlib=libc++ -isysroot $(xcrun --show-sdk-path)</span><br><span class="line"><span class="comment"># ollvm</span></span><br><span class="line"><span class="comment"># -mllvm -sub 指令替代</span></span><br><span class="line"><span class="comment"># -mllvm -bcf 虚假控制流</span></span><br><span class="line"><span class="comment"># -mllvm -fla 控制流平坦化</span></span><br><span class="line">./clang++  -std=c++<span class="number">17</span> rc4.cc -o rc4 -isysroot $(xcrun --show-sdk-path) -arch arm64 -mllvm -fla</span><br></pre></td></tr></table></figure>
 
-<h1 id="Unicorn"><a href="#Unicorn" class="headerlink" title="Unicorn"></a>Unicorn</h1><h2 id="brew安装"><a href="#brew安装" class="headerlink" title="brew安装"></a>brew安装</h2><blockquote>
+<h1 id="MAC-Unicorn"><a href="#MAC-Unicorn" class="headerlink" title="MAC Unicorn"></a>MAC Unicorn</h1><h2 id="brew安装"><a href="#brew安装" class="headerlink" title="brew安装"></a>brew安装</h2><blockquote>
 <p>brew install unicorn</p>
 </blockquote>
 <h2 id="python安装"><a href="#python安装" class="headerlink" title="python安装"></a>python安装</h2><blockquote>
@@ -299,9 +299,9 @@
 <h3 id="cp-file"><a href="#cp-file" class="headerlink" title="cp file"></a>cp file</h3><ul>
 <li>把build目录的libunicorn.2.dylib  libunicorn.a  libunicorn.dylib三个文件copy到 python3.x&#x2F;site-packages&#x2F;unicorn&#x2F;lib</li>
 </ul>
-<h1 id="JADX内存限制修改"><a href="#JADX内存限制修改" class="headerlink" title="JADX内存限制修改"></a>JADX内存限制修改</h1><p>vim bin –&gt; jadx-<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=gui&spm=1001.2101.3001.7020">gui</a>，修改下列内容中的最小和最大内存</p>
+<h1 id="MAC-JADX内存限制修改"><a href="#MAC-JADX内存限制修改" class="headerlink" title="MAC JADX内存限制修改"></a>MAC JADX内存限制修改</h1><p>vim bin –&gt; jadx-<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=gui&spm=1001.2101.3001.7020">gui</a>，修改下列内容中的最小和最大内存</p>
 <p>DEFAULT_JVM_OPTS&#x3D;””-Xms128M” “-Xmx8g””</p>
-
+<h1 id="ubuntu-pyenv-install"><a href="#ubuntu-pyenv-install" class="headerlink" title="ubuntu pyenv install"></a>ubuntu pyenv install</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get upgrade</span><br><span class="line"></span><br><span class="line">sudo apt-get install make build-essential libssl-dev zlib1g-dev </span><br><span class="line">sudo apt-get install libbz2-dev libreadline-dev libsqlite3-dev wget curl </span><br><span class="line">sudo apt-get install llvm libncurses5-dev libncursesw5-dev </span><br><span class="line"></span><br><span class="line">vim ~/.bashrc</span><br><span class="line">export PATH=<span class="string">&quot;~/.pyenv/bin:$PATH&quot;</span></span><br><span class="line"><span class="built_in">eval</span> <span class="string">&quot;$(pyenv init -)&quot;</span></span><br><span class="line"><span class="built_in">eval</span> <span class="string">&quot;$(pyenv virtualenv-init -)&quot;</span></span><br><span class="line"></span><br><span class="line">source ~/.bashrc</span><br></pre></td></tr></table></figure>
     </div>
 
     
@@ -384,7 +384,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#IDA"><span class="nav-number">1.</span> <span class="nav-text">IDA</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%80%E4%BB%A3%E7%90%86%E5%AE%89%E8%A3%85brew"><span class="nav-number">1.1.</span> <span class="nav-text">开代理安装brew</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#brew%E5%AE%89%E8%A3%85Wineskin"><span class="nav-number">1.2.</span> <span class="nav-text">brew安装Wineskin</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Wineskin%E5%88%9B%E5%BB%BA%E9%95%9C%E5%83%8F"><span class="nav-number">1.3.</span> <span class="nav-text">Wineskin创建镜像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IDA%E5%AE%89%E8%A3%85"><span class="nav-number">1.4.</span> <span class="nav-text">IDA安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B3%A8%E5%86%8C%E8%A1%A8%E4%BF%AE%E6%94%B9"><span class="nav-number">1.5.</span> <span class="nav-text">注册表修改</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89python%E8%B7%AF%E5%BE%84"><span class="nav-number">1.6.</span> <span class="nav-text">自定义python路径</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Docker"><span class="nav-number">2.</span> <span class="nav-text">Docker</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Install"><span class="nav-number">2.1.</span> <span class="nav-text">Install</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Docker-angr"><span class="nav-number">3.</span> <span class="nav-text">Docker angr</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#llvm"><span class="nav-number">4.</span> <span class="nav-text">llvm</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ollvm"><span class="nav-number">5.</span> <span class="nav-text">ollvm</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Unicorn"><span class="nav-number">6.</span> <span class="nav-text">Unicorn</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#brew%E5%AE%89%E8%A3%85"><span class="nav-number">6.1.</span> <span class="nav-text">brew安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#python%E5%AE%89%E8%A3%85"><span class="nav-number">6.2.</span> <span class="nav-text">python安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%96%E8%AF%91"><span class="nav-number">6.3.</span> <span class="nav-text">编译</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3-Github-Issue"><span class="nav-number">6.3.1.</span> <span class="nav-text">相关 Github Issue</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BC%96%E8%AF%91unicorn"><span class="nav-number">6.3.2.</span> <span class="nav-text">编译unicorn</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cp-file"><span class="nav-number">6.3.3.</span> <span class="nav-text">cp file</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JADX%E5%86%85%E5%AD%98%E9%99%90%E5%88%B6%E4%BF%AE%E6%94%B9"><span class="nav-number">7.</span> <span class="nav-text">JADX内存限制修改</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#MAC-IDA"><span class="nav-number">1.</span> <span class="nav-text">MAC IDA</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%80%E4%BB%A3%E7%90%86%E5%AE%89%E8%A3%85brew"><span class="nav-number">1.1.</span> <span class="nav-text">开代理安装brew</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#brew%E5%AE%89%E8%A3%85Wineskin"><span class="nav-number">1.2.</span> <span class="nav-text">brew安装Wineskin</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Wineskin%E5%88%9B%E5%BB%BA%E9%95%9C%E5%83%8F"><span class="nav-number">1.3.</span> <span class="nav-text">Wineskin创建镜像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IDA%E5%AE%89%E8%A3%85"><span class="nav-number">1.4.</span> <span class="nav-text">IDA安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B3%A8%E5%86%8C%E8%A1%A8%E4%BF%AE%E6%94%B9"><span class="nav-number">1.5.</span> <span class="nav-text">注册表修改</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89python%E8%B7%AF%E5%BE%84"><span class="nav-number">1.6.</span> <span class="nav-text">自定义python路径</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MAC-Docker"><span class="nav-number">2.</span> <span class="nav-text">MAC Docker</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Install"><span class="nav-number">2.1.</span> <span class="nav-text">Install</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker-angr"><span class="nav-number">2.2.</span> <span class="nav-text">Docker angr</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#llvm"><span class="nav-number">3.</span> <span class="nav-text">llvm</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ollvm"><span class="nav-number">4.</span> <span class="nav-text">ollvm</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MAC-Unicorn"><span class="nav-number">5.</span> <span class="nav-text">MAC Unicorn</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#brew%E5%AE%89%E8%A3%85"><span class="nav-number">5.1.</span> <span class="nav-text">brew安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#python%E5%AE%89%E8%A3%85"><span class="nav-number">5.2.</span> <span class="nav-text">python安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%96%E8%AF%91"><span class="nav-number">5.3.</span> <span class="nav-text">编译</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3-Github-Issue"><span class="nav-number">5.3.1.</span> <span class="nav-text">相关 Github Issue</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BC%96%E8%AF%91unicorn"><span class="nav-number">5.3.2.</span> <span class="nav-text">编译unicorn</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cp-file"><span class="nav-number">5.3.3.</span> <span class="nav-text">cp file</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MAC-JADX%E5%86%85%E5%AD%98%E9%99%90%E5%88%B6%E4%BF%AE%E6%94%B9"><span class="nav-number">6.</span> <span class="nav-text">MAC JADX内存限制修改</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ubuntu-pyenv-install"><span class="nav-number">7.</span> <span class="nav-text">ubuntu pyenv install</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -397,7 +397,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">27</span>
+          <span class="site-state-item-count">29</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -410,7 +410,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-count">16</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

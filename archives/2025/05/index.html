@@ -22,20 +22,17 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="分块划分">
-<meta property="og:type" content="article">
-<meta property="og:title" content="分块划分">
-<meta property="og:url" content="http://example.com/ai-chunk/index.html">
+  <meta name="description" content="Team UKFC Mobile | Re">
+<meta property="og:type" content="website">
+<meta property="og:title" content="UmVfX1BvaW50&#39;s Blog">
+<meta property="og:url" content="http://example.com/archives/2025/05/index.html">
 <meta property="og:site_name" content="UmVfX1BvaW50&#39;s Blog">
-<meta property="og:description" content="分块划分">
+<meta property="og:description" content="Team UKFC Mobile | Re">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-03-28T04:20:03.182Z">
-<meta property="article:modified_time" content="2025-03-28T04:24:44.837Z">
 <meta property="article:author" content="UmVfX1BvaW50">
-<meta property="article:tag" content="AI">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/ai-chunk/">
+<link rel="canonical" href="http://example.com/archives/2025/05/">
 
 
 <script id="page-configurations">
@@ -43,12 +40,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : true,
+    isPost : false,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>分块划分 | UmVfX1BvaW50's Blog</title>
+  <title>归档 | UmVfX1BvaW50's Blog</title>
   
 
 
@@ -151,144 +148,70 @@
         <div class="content-wrap">
           
 
-          <div class="content post posts-expand">
+          <div class="content archive">
             
 
-    
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/ai-chunk/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="UmVfX1BvaW50">
-      <meta itemprop="description" content="Team UKFC Mobile | Re">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="UmVfX1BvaW50's Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          分块划分
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/AI/" itemprop="url" rel="index"><span itemprop="name">AI</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
+  
+  <div class="post-block">
+    <div class="posts-collapse">
+      <div class="collection-title">
+        <span class="collection-header">嗯..! 目前共计 29 篇日志。 继续努力。</span>
+      </div>
 
       
-        <ul>
-<li>分块划分<span id="more"></span></li>
-</ul>
-<HR color="red"></HR>
-
-
-
-<h3 id="边际采样分块（Margin-based-Sampling-Chunking）"><a href="#边际采样分块（Margin-based-Sampling-Chunking）" class="headerlink" title="边际采样分块（Margin-based Sampling Chunking）"></a><strong>边际采样分块（Margin-based Sampling Chunking）</strong></h3><p><strong>核心思想</strong>：通过检测文本中的“边际变化”或概率差异来确定分块边界，确保分块的语义连贯性。</p>
-<p><strong>实现方式</strong>：</p>
-<ul>
-<li><strong>概率边界检测</strong>：使用语言模型计算文本中每个位置的“分块边界概率”。当概率超过阈值时，将此处作为分块起点或终点。</li>
-<li><strong>滑动窗口对比</strong>：比较相邻文本片段的特征（如模型输出的概率分布或嵌入相似性），当差异显著时（边际变化超过阈值），分割为独立块。</li>
-<li><strong>动态调整</strong>：根据上下文长度或领域特性自适应调整分块大小，避免固定窗口的局限性。</li>
-</ul>
-<p><strong>优势</strong>：</p>
-<ul>
-<li>灵活性高，适应不同文本结构。</li>
-<li>减少话题混杂，提升检索相关性。</li>
-</ul>
-<p><strong>适用场景</strong>：文本结构复杂、话题切换频繁的场景（如多领域混合文档）</p>
-<h3 id="困惑度分块（Perplexity-based-Chunking）"><a href="#困惑度分块（Perplexity-based-Chunking）" class="headerlink" title="困惑度分块（Perplexity-based Chunking）"></a><strong>困惑度分块（Perplexity-based Chunking）</strong></h3><p><strong>核心思想</strong>：利用语言模型的困惑度（Perplexity，PP）指标，找到语义完整的自然分块边界。</p>
-<p><strong>实现方式</strong>：</p>
-<ul>
-<li><strong>逐句&#x2F;段落评估</strong>：计算文本中每个句子或段落的困惑度，低困惑度表明模型“熟悉”该内容（如语法正确、主题明确）。</li>
-<li><strong>边界检测</strong>：在困惑度突增的位置（如话题转换或结构断裂处）进行分块，确保块内语义一致性。</li>
-<li><strong>预训练模型辅助</strong>：使用BERT、GPT等模型生成困惑度曲线，根据曲线平滑度分割文本。</li>
-</ul>
-<p><strong>优势</strong>：</p>
-<ul>
-<li>依赖语言模型对文本的理解能力，分块更符合语义逻辑。</li>
-<li>减少不完整块（如截断的句子或段落）。</li>
-</ul>
-<p><strong>适用场景</strong>：需要高语义完整性的任务（如问答系统、文档摘要）。</p>
-<h3 id="对比"><a href="#对比" class="headerlink" title="对比"></a>对比</h3><table>
-<thead>
-<tr>
-<th><strong>特性</strong></th>
-<th><strong>边际采样分块</strong></th>
-<th><strong>困惑度分块</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td><strong>核心依据</strong></td>
-<td>概率差异或边际变化</td>
-<td>语言模型的困惑度指标</td>
-</tr>
-<tr>
-<td><strong>计算成本</strong></td>
-<td>较低（依赖简单统计或滑动窗口）</td>
-<td>较高（需多次调用模型计算困惑度）</td>
-</tr>
-<tr>
-<td><strong>灵活性</strong></td>
-<td>高（动态调整分块大小）</td>
-<td>中（依赖模型预训练知识）</td>
-</tr>
-<tr>
-<td><strong>适用场景</strong></td>
-<td>多领域、结构复杂文本</td>
-<td>语义连贯性要求高的任务</td>
-</tr>
-</tbody></table>
-
+    <div class="collection-year">
+      <span class="collection-header">2025</span>
     </div>
 
-    
-    
-    
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
-      <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/tags/AI/" rel="tag"># AI</a>
-          </div>
+      <div class="post-meta">
+        <time itemprop="dateCreated"
+              datetime="2025-05-08T20:03:37+08:00"
+              content="2025-05-08">
+          05-08
+        </time>
+      </div>
 
-        
+      <div class="post-title">
+          <a class="post-title-link" href="/Traffic/" itemprop="url">
+            <span itemprop="name">Android中的通信协议总结</span>
+          </a>
+      </div>
 
-
-        
-    <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/paper1/" rel="prev" title="Efficient Query-Based Attack against ML-Based Android Malware Detection under Zero Knowledge Setting">
-      <i class="fa fa-chevron-left"></i> Efficient Query-Based Attack against ML-Based Android Malware Detection under Zero Knowledge Setting
-    </a></div>
-      <div class="post-nav-item">
-    <a href="/RAG1/" rel="next" title="RAG综合">
-      RAG综合 <i class="fa fa-chevron-right"></i>
-    </a></div>
-    </div>
-      </footer>
-    
+    </header>
   </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <div class="post-meta">
+        <time itemprop="dateCreated"
+              datetime="2025-05-06T09:56:04+08:00"
+              content="2025-05-06">
+          05-06
+        </time>
+      </div>
+
+      <div class="post-title">
+          <a class="post-title-link" href="/apkDownload/" itemprop="url">
+            <span itemprop="name">APK批量</span>
+          </a>
+      </div>
+
+    </header>
+  </article>
+
+
+    </div>
+  </div>
   
   
+  
+
   
 
 
@@ -341,7 +264,6 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%B9%E9%99%85%E9%87%87%E6%A0%B7%E5%88%86%E5%9D%97%EF%BC%88Margin-based-Sampling-Chunking%EF%BC%89"><span class="nav-number">1.</span> <span class="nav-text">边际采样分块（Margin-based Sampling Chunking）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%B0%E6%83%91%E5%BA%A6%E5%88%86%E5%9D%97%EF%BC%88Perplexity-based-Chunking%EF%BC%89"><span class="nav-number">2.</span> <span class="nav-text">困惑度分块（Perplexity-based Chunking）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E6%AF%94"><span class="nav-number">3.</span> <span class="nav-text">对比</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
